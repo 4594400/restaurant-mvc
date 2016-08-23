@@ -10,17 +10,14 @@
     <tr>
         <th>Name</th>
         <th>Surname</th>
-        <th>Phone Number</th>
         <th>Position</th>
-        <th>Salary</th>
+
     </tr>
 <c:forEach items="${employees}" var="employee">
     <tr>
-        <td><a href="/employee?employeeName=${employee.name}"/>${employee.name}</td>
+        <td><a href="/employee/${employee.name}">${employee.name}</a></td>
         <td>${employee.surname}</td>
-        <td>${employee.phoneNumber}</td>
         <td>${employee.position}</td>
-        <td>${employee.salary}</td>
     </tr>
 </c:forEach>
 
