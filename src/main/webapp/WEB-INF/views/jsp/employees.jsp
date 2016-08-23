@@ -19,6 +19,7 @@
         <td>${employee.surname}</td>
         <td>${employee.position}</td>
     </tr>
+
 </c:forEach>
 
 </table>
