@@ -10,16 +10,12 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    int insertEmployee(Employee employee);
-
-
-    int deleteEmployeeById(int id);
-
-
-    Employee selectEmployeeByName(String name);
-
-
-    List<Employee> selectAllEmployee();
+    void save(Employee employee);
+    void remove(Employee employee);
+    void removeAll();
+    Employee load(Long id);
+    Employee findByName(String name);
+    List<Employee> findAll();
 
 
 

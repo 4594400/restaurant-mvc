@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+
+<img src="<c:url value="/resources/images/logo.jpg"/>"/>
 <a href="/employees">Show all Employees</a>
 </body>
 </html>

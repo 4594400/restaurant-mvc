@@ -1,6 +1,11 @@
 package ua.goit.restaurant.model;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +20,7 @@ public class Order {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employeeId")
     private Employee waiter;
 

@@ -3,12 +3,13 @@ package ua.goit.restaurant.model;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "employees")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Employee {
+public class Employee implements Serializable{
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

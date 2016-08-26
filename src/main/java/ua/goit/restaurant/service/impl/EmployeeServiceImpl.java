@@ -15,30 +15,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public int insertEmployee(Employee employee) {
-        return 0;
+    public void save(Employee employee) {
+        employeeDao.save(employee);
     }
 
     @Override
     @Transactional
-    public int deleteEmployeeById(int id) {
-        return 0;
+    public void remove(Employee employee) {
+        employeeDao.remove(employee);
+
     }
 
     @Override
     @Transactional
-    public Employee selectEmployeeByName(String name) {
+    public void removeAll() {
+        employeeDao.removeAll();
+
+    }
+
+    @Override
+    @Transactional
+    public Employee load(Long id) {
+        return employeeDao.load(id);
+    }
+
+    @Override
+    @Transactional
+    public Employee findByName(String name) {
         return employeeDao.findByName(name);
     }
 
     @Override
     @Transactional
-    public List<Employee> selectAllEmployee() {
+    public List<Employee> findAll() {
         return employeeDao.findAll();
     }
-
-
-
 
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;

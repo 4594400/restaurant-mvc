@@ -14,7 +14,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Service
+@Service
 public class InitDB {
     @Autowired
     private DishDao dishDao;

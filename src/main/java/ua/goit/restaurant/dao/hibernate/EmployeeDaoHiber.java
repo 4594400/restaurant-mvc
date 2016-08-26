@@ -31,7 +31,7 @@ public class EmployeeDaoHiber implements EmployeeDao {
     @Override
     @Transactional
     public Employee load(Long id) {
-        Employee result = sessionFactory.getCurrentSession().load(Employee.class, id);
+        Employee result = sessionFactory.getCurrentSession().get(Employee.class, id);
         if (result==null) {
             throw new RuntimeException("Cannot find Employee by id = " + id);
         }
