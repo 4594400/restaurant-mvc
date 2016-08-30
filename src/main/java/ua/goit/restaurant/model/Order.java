@@ -20,11 +20,11 @@ public class Order {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "employeeId")
     private Employee waiter;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "dishes_to_orders",
             joinColumns = {@JoinColumn(name = "orderId")},

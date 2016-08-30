@@ -2,6 +2,7 @@ package ua.goit.restaurant.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "dishes")
@@ -24,6 +25,12 @@ public class Dish {
 
     @Column(name = "weight")
     private Double weight;
+
+    //Only for mapping
+    @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
+    private List<Order> order;
+
+
 
     public Dish() {
     }
@@ -73,6 +80,14 @@ public class Dish {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
     }
 
     @Override

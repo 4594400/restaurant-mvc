@@ -1,10 +1,12 @@
 package ua.goit.restaurant.model;
 
+import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -36,6 +38,11 @@ public class Employee implements Serializable{
     @Column(name = "salary")
     private Double salary;
 
+//Only for mapping
+    @OneToMany(mappedBy = "waiter", cascade = CascadeType.ALL)
+    private List<Order> orders;
+
+
     public Employee() {
     }
 
@@ -46,6 +53,10 @@ public class Employee implements Serializable{
         this.phoneNumber = phoneNumber;
         this.position = position;
         this.salary = salary;
+    }
+
+    public boolean isNew() {
+        return (this.Id == null);
     }
 
     public Long getId() {
@@ -102,6 +113,14 @@ public class Employee implements Serializable{
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
