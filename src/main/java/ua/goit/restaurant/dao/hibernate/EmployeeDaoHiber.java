@@ -18,7 +18,7 @@ public class EmployeeDaoHiber implements EmployeeDao {
     @Override
     @Transactional
     public void save(Employee employee) {
-        sessionFactory.getCurrentSession().save(employee);
+        sessionFactory.getCurrentSession().saveOrUpdate(employee);
     }
 
     @Override

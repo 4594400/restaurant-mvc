@@ -55,6 +55,7 @@ public class Employee implements Serializable{
         this.salary = salary;
     }
 
+    ///////////////////////////////////
     public boolean isNew() {
         return (this.Id == null);
     }

@@ -1,6 +1,8 @@
 package ua.goit.restaurant.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,24 +24,26 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/employees", method = RequestMethod.GET)
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
+
+    @RequestMapping(value = "/employees/list", method = RequestMethod.GET)
     public String employees(Map<String, Object> model) {
         model.put("employees", employeeService.findAll());
-        return "employees";
+        return "employees/list";
     }
 
 
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+    @RequestMapping(value = "/employees/list", method = RequestMethod.POST)
     public String saveOrUpdateUser(@ModelAttribute("employeeForm") @Validated Employee employee, BindingResult result, Model model) {
 
         if (result.hasErrors()) {
-            return "employeeform";
+            return "employees/employeeform";
         } else {
-
             employeeService.save(employee);
 
             // POST/REDIRECT/GET
-            return "redirect:/employee/" + employee.getName();
+           // return "redirect:/employee/" + employee.getName();
+            return "redirect:/employees/list";
 
             // POST/FORWARD/GET
             // return "user/list";
@@ -51,15 +55,15 @@ public class EmployeeController {
 
 
 
-    @RequestMapping(value = "/employee/{employeeName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees/show/{employeeName}", method = RequestMethod.GET)
     public ModelAndView employee(@PathVariable String employeeName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("employee", employeeService.findByName(employeeName));
-        modelAndView.setViewName("employee");
+        modelAndView.setViewName("employees/show");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/employee/{id}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees/{id}/delete", method = RequestMethod.GET)
     public String employee(@PathVariable("id") Long id) {
 
         Employee employee = new Employee();
@@ -67,14 +71,12 @@ public class EmployeeController {
         System.out.println(employee.toString());
         employeeService.remove(employee);
 
-        return "redirect:/employees";
+        return "redirect:/employees/list";
     }
 
     // show add user form
-    @RequestMapping(value = "/employee/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees/add", method = RequestMethod.GET)
     public String showAddEmployeeForm(Model model) {
-
-
 
         Employee employee = new Employee();
 
@@ -87,8 +89,18 @@ public class EmployeeController {
         employee.setSalary(2500.0);
 
         model.addAttribute("employeeForm", employee);
-        return "employeeform";
+        return "employees/employeeform";
+    }
 
+    // show update form
+    @RequestMapping(value = "/employees/{id}/update", method = RequestMethod.GET)
+    public String showUpdateEmployeeForm(@PathVariable("id") Long id, Model model) {
+
+        LOGGER.debug("showUpdateEmployeeForm() : {}", id);
+
+        Employee employee = employeeService.load(id);
+        model.addAttribute("employeeForm", employee);
+        return "employees/employeeform";
     }
 
 
