@@ -30,19 +30,18 @@ public class EmployeeDaoHiber implements EmployeeDao {
 
     @Override
     @Transactional
+    public void removeAll() {
+        sessionFactory.getCurrentSession().createQuery("delete from Employee").executeUpdate();
+    }
+
+    @Override
+    @Transactional
     public Employee load(Long id) {
         Employee result = sessionFactory.getCurrentSession().get(Employee.class, id);
         if (result==null) {
             throw new RuntimeException("Cannot find Employee by id = " + id);
         }
         return result;
-    }
-
-    @Override
-    @Transactional
-    public List<Employee> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("select e from Employee e").list();
-
     }
 
     @Override
@@ -56,8 +55,9 @@ public class EmployeeDaoHiber implements EmployeeDao {
 
     @Override
     @Transactional
-    public void removeAll() {
-        sessionFactory.getCurrentSession().createQuery("delete from Employee").executeUpdate();
+    public List<Employee> findAll() {
+        return sessionFactory.getCurrentSession().createQuery("select e from Employee e").list();
+
     }
 
 

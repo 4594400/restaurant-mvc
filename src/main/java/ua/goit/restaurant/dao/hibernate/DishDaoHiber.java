@@ -18,13 +18,30 @@ public class DishDaoHiber implements DishDao {
     @Override
     @Transactional
     public void save(Dish dish) {
-        sessionFactory.getCurrentSession().save(dish);
+        sessionFactory.getCurrentSession().saveOrUpdate(dish);
     }
 
     @Override
     @Transactional
-    public List<Dish> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("select d from Dish d").list();
+    public void remove(Dish dish) {
+        sessionFactory.getCurrentSession().delete(dish);
+    }
+
+    @Override
+    @Transactional
+    public void removeAll() {
+        sessionFactory.getCurrentSession().createQuery("delete from Dish").executeUpdate();
+    }
+
+
+    @Override
+    @Transactional
+    public Dish load(Long id) {
+        Dish result = sessionFactory.getCurrentSession().get(Dish.class, id);
+        if (result==null) {
+            throw new RuntimeException("Cannot find Dish by id = " + id);
+        }
+        return result;
     }
 
     @Override
@@ -38,9 +55,10 @@ public class DishDaoHiber implements DishDao {
 
     @Override
     @Transactional
-    public void removeAll() {
-        sessionFactory.getCurrentSession().createQuery("delete from Dish").executeUpdate();
+    public List<Dish> findAll() {
+        return sessionFactory.getCurrentSession().createQuery("select d from Dish d").list();
     }
+
 
 
 
