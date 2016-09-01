@@ -20,26 +20,25 @@
         <thead>
         <tr>
             <th>Name</th>
-            <th>Surname</th>
-            <th>Position</th>
             <th></th>
             <th></th>
+
         </tr>
         </thead>
 
-        <c:forEach items="${employees}" var="employee">
+        <c:forEach items="${menus}" var="menu">
             <tr>
-                <td><a href="/menus/show/${employee.name}">${employee.name}</a></td>
-                <td>${employee.surname}</td>
-                <td>${employee.position}</td>
+                <td><a href="/menus/show/${menu.name}">${menu.name}</a></td>
+                <%--<td>${menu.dishes}</td>--%>
+
                 <td style="align-items: center; width: 20px">
-                    <spring:url value="/menus/${employee.id}/delete" var="deleteUrl"/>
+                    <spring:url value="/menus/${menu.id}/delete" var="deleteUrl"/>
                     <a href="${deleteUrl}">
                         <img src="<c:url value="/resources/images/garbage24.jpg"/>"/>
                     </a>
                 </td>
                 <td style="align-items: center; width: 20px">
-                    <spring:url value="/menus/${employee.id}/update" var="updateUrl"/>
+                    <spring:url value="/menus/${menu.id}/update" var="updateUrl"/>
                     <a href="${updateUrl}">
                         <img src="<c:url value="/resources/images/edit24.png"/>"/>
                     </a>

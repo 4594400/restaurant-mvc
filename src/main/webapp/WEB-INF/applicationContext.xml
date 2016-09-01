@@ -14,9 +14,11 @@
     <bean id="employeeDao" class="ua.goit.restaurant.dao.hibernate.EmployeeDaoHiber"/>
     <bean id="employeeService" class="ua.goit.restaurant.service.impl.EmployeeServiceImpl"/>
 
-
     <bean id="dishDao" class="ua.goit.restaurant.dao.hibernate.DishDaoHiber"/>
     <bean id="dishService" class="ua.goit.restaurant.service.impl.DishServiceImpl"/>
+
+    <bean id="menuDao" class="ua.goit.restaurant.dao.hibernate.MenuDaoHiber"/>
+    <bean id="menuService" class="ua.goit.restaurant.service.impl.MenuServiceImpl"/>
 
     <bean id="orderDao" class="ua.goit.restaurant.dao.hibernate.OrderDaoHiber"/>
 

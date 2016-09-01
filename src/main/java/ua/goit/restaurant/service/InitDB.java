@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.goit.restaurant.dao.interfaces.DishDao;
 import ua.goit.restaurant.dao.interfaces.EmployeeDao;
+import ua.goit.restaurant.dao.interfaces.MenuDao;
 import ua.goit.restaurant.dao.interfaces.OrderDao;
 import ua.goit.restaurant.model.*;
 
@@ -22,6 +23,8 @@ public class InitDB {
     private EmployeeDao employeeDao;
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private MenuDao menuDao;
 
 
     @PostConstruct
@@ -147,6 +150,22 @@ public class InitDB {
         order3.setOrderDate(new java.util.Date());
         order3.setOrderStatus(OrderStatus.OPENED);
         orderDao.save(order3);
+
+        Menu menu1 = new Menu();
+        menu1.setName("Breakfast");
+        menu1.setDishes(breakfast);
+        menuDao.save(menu1);
+
+        Menu menu2 = new Menu();
+        menu2.setName("Dinner");
+        menu2.setDishes(dinner);
+        menuDao.save(menu2);
+
+        Menu menu3 = new Menu();
+        menu3.setName("Supper");
+        menu3.setDishes(supper);
+        menuDao.save(menu3);
+
 
 
 

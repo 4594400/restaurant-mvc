@@ -30,6 +30,10 @@ public class Dish {
     @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
     private List<Order> order;
 
+    //Only for mapping
+    @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
+    private List<Menu> menus;
+
 
 
     public Dish() {
@@ -93,6 +97,14 @@ public class Dish {
 
     public void setOrder(List<Order> order) {
         this.order = order;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 
     @Override

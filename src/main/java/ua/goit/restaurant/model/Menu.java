@@ -4,8 +4,8 @@ package ua.goit.restaurant.model;
 import javax.persistence.*;
 import java.util.List;
 
-/*@Entity
-@Table(name = "menus")*/
+@Entity
+@Table(name = "menus")
 public class Menu {
     @Id
     @GeneratedValue
@@ -13,6 +13,13 @@ public class Menu {
     @Column(name = "name")
     private String name;
 
+    ////////////////////////////////
+    @ManyToMany()
+    @JoinTable(
+            name = "menus_to_dishes",
+            joinColumns = {@JoinColumn (name = "menuId")},
+            inverseJoinColumns = {@JoinColumn (name = "dishId")}
+            )
     private List<Dish> dishes;
 
     public Menu() {
