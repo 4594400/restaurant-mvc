@@ -8,6 +8,8 @@ import ua.goit.restaurant.dao.interfaces.MenuDao;
 import ua.goit.restaurant.model.Dish;
 import ua.goit.restaurant.model.Menu;
 
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,8 +62,26 @@ public class MenuDaoHiber implements MenuDao {
 
     @Override
     @Transactional
-    public void addDish(Menu menu, Dish dish) {
-        //To Realize
+    public List<Dish> findAllDishByMenuId(Long id) {
+        TypedQuery query = sessionFactory.getCurrentSession().createQuery(
+                "from Menu m JOIN m.dishes d WHERE m.id=:idMenu", Dish.class);
+        query.setParameter("idMenu", id);
+        List<Dish> result = query.getResultList();
+
+        return result;
+
+    }
+
+    @Override
+    @Transactional
+    public void addDishToMenu(Menu menu, Dish dish) {
+        if (!menu.getDishes().contains(dish)){
+            menu.getDishes().add(dish);
+            sessionFactory.getCurrentSession().saveOrUpdate(menu);
+        } else {
+            throw new RuntimeException("Dish already exist in menu = " + menu.getName());
+        }
+
 
     }
 

@@ -51,9 +51,14 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     @Transactional
-    public void addDish(Menu menu, Dish dish) {
-        // To Realize
+    public List<Dish> findAllDishByMenuId(Long id) {
+        return menuDao.findAllDishByMenuId(id);
+    }
 
+    @Override
+    @Transactional
+    public void addDishToMenu(Menu menu, Dish dish) {
+        menuDao.addDishToMenu(menu, dish);
     }
 
 

@@ -13,5 +13,6 @@ public interface MenuService {
     Menu load(Long id);
     Menu findByName(String name);
     List<Menu> findAll();
-    void addDish(Menu menu, Dish dish);
+    List<Dish> findAllDishByMenuId(Long id);
+    void addDishToMenu(Menu menu, Dish dish);
 }

@@ -14,7 +14,7 @@ public class Menu {
     private String name;
 
     ////////////////////////////////
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "menus_to_dishes",
             joinColumns = {@JoinColumn (name = "menuId")},
@@ -28,6 +28,10 @@ public class Menu {
     public Menu(String name, List<Dish> dishes) {
         this.name = name;
         this.dishes = dishes;
+    }
+////////////////////////////////
+    public boolean isNew() {
+        return (this.id == null);
     }
 
     public Long getId() {
