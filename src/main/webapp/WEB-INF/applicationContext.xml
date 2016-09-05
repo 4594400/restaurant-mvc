@@ -23,6 +23,14 @@
     <bean id="orderDao" class="ua.goit.restaurant.dao.hibernate.OrderDaoHiber"/>
 
 
+    <bean id="ingredientDao" class="ua.goit.restaurant.dao.hibernate.IngredientDaoHiber"/>
+    <bean id="ingredientService" class="ua.goit.restaurant.service.impl.IngredientServiceImpl"/>
+
+    <bean id="warehouseDao" class="ua.goit.restaurant.dao.hibernate.WarehouseDaoHiber"/>
+    <bean id="warehouseService" class="ua.goit.restaurant.service.impl.WarehouseServiceImpl"/>
+
+
+
 
 
 </beans>

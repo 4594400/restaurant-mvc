@@ -3,10 +3,7 @@ package ua.goit.restaurant.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.goit.restaurant.dao.interfaces.DishDao;
-import ua.goit.restaurant.dao.interfaces.EmployeeDao;
-import ua.goit.restaurant.dao.interfaces.MenuDao;
-import ua.goit.restaurant.dao.interfaces.OrderDao;
+import ua.goit.restaurant.dao.interfaces.*;
 import ua.goit.restaurant.model.*;
 
 
@@ -25,6 +22,11 @@ public class InitDB {
     private OrderDao orderDao;
     @Autowired
     private MenuDao menuDao;
+    @Autowired
+    private IngredientDao ingredientDao;
+    @Autowired
+    private WarehouseDao warehouseDao;
+
 
 
     @PostConstruct
@@ -165,6 +167,28 @@ public class InitDB {
         menu3.setName("Supper");
         menu3.setDishes(supper);
         menuDao.save(menu3);
+
+
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setName("Potato");
+        ingredientDao.save(ingredient1);
+
+        Ingredient ingredient2 = new Ingredient();
+        ingredient2.setName("Onion");
+        ingredientDao.save(ingredient2);
+
+        Warehouse warehouse1 = new Warehouse();
+        warehouse1.setIngredient(ingredient1);
+        warehouse1.setQuantity(500.0);
+        warehouse1.setMeasure(Measure.KILOGRAM);
+        warehouseDao.save(warehouse1);
+
+
+        Warehouse warehouse2 = new Warehouse();
+        warehouse2.setIngredient(ingredient2);
+        warehouse2.setQuantity(100.0);
+        warehouse2.setMeasure(Measure.TON);
+        warehouseDao.save(warehouse2);
 
 
 
