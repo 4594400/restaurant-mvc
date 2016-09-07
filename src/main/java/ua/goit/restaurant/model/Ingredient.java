@@ -14,12 +14,22 @@ public class Ingredient {
     @Column(name = "name", unique = true)
     private String name;
 
+    @OneToOne(mappedBy = "ingredient", cascade = CascadeType.ALL)
+    private Warehouse warehouse;
+
     public Ingredient() {
     }
 
     public Ingredient(String name) {
         this.name = name;
     }
+
+
+    ///////////////////////////////
+    public boolean isNew() {
+        return (this.id == null);
+    }
+
 
     public Long getId() {
         return id;

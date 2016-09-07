@@ -13,32 +13,34 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public void save(Ingredient ingredient) {
+        ingredientDao.save(ingredient);
 
     }
 
     @Override
     public void remove(Ingredient ingredient) {
+        ingredientDao.remove(ingredient);
 
     }
 
     @Override
     public void removeAll() {
-
+        ingredientDao.removeAll();
     }
 
     @Override
     public Ingredient load(Long id) {
-        return null;
+        return ingredientDao.load(id);
     }
 
     @Override
     public Ingredient findByName(String name) {
-        return null;
+        return ingredientDao.findByName(name);
     }
 
     @Override
     public List<Ingredient> findAll() {
-        return null;
+        return ingredientDao.findAll();
     }
 
     public void setIngredientDao(IngredientDao ingredientDao) {

@@ -3,16 +3,19 @@ package ua.goit.restaurant.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "warehouse")
 public class Warehouse implements Serializable{
 
-
     @Id
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ingredientId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    //@Id
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ingredientId", unique = true)
     private Ingredient ingredient;
 
     @Column(name = "quantity")
@@ -32,6 +35,13 @@ public class Warehouse implements Serializable{
     }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Ingredient getIngredient() {
         return ingredient;
@@ -41,7 +51,7 @@ public class Warehouse implements Serializable{
         this.ingredient = ingredient;
     }
 
-    public Double getQuantity(int i) {
+    public Double getQuantity() {
         return quantity;
     }
 
@@ -57,12 +67,14 @@ public class Warehouse implements Serializable{
         this.measure = measure;
     }
 
+
     @Override
     public String toString() {
         return "Warehouse{" +
+                "id=" + id +
+                ", ingredient=" + ingredient +
                 ", quantity=" + quantity +
                 ", measure=" + measure +
-                ", ingredient=" + ingredient +
                 '}';
     }
 
@@ -73,17 +85,17 @@ public class Warehouse implements Serializable{
 
         Warehouse warehouse = (Warehouse) o;
 
+        if (ingredient != null ? !ingredient.equals(warehouse.ingredient) : warehouse.ingredient != null) return false;
         if (quantity != null ? !quantity.equals(warehouse.quantity) : warehouse.quantity != null) return false;
-        if (measure != warehouse.measure) return false;
-        return ingredient != null ? ingredient.equals(warehouse.ingredient) : warehouse.ingredient == null;
+        return measure == warehouse.measure;
 
     }
 
     @Override
     public int hashCode() {
-        int result = quantity != null ? quantity.hashCode() : 0;
+        int result = ingredient != null ? ingredient.hashCode() : 0;
+        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (measure != null ? measure.hashCode() : 0);
-        result = 31 * result + (ingredient != null ? ingredient.hashCode() : 0);
         return result;
     }
 }

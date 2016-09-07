@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <head>
 <title>Spring MVC Form Handling Example</title>
@@ -13,7 +14,7 @@
 <spring:url value="/logout" var="logout" />
 <spring:url value="/users/add" var="urlAddUser" />
 
-<nav class="navbar navbar-inverse ">
+<%--<nav class="navbar navbar-inverse ">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${login}">Log in</a>
@@ -24,42 +25,50 @@
 			</ul>
 		</div>
 	</div>
-</nav>
+</nav>--%>
 
-<%--<div id="navbar">
-    <ul class="nav navbar-nav navbar-right">
-        <li role="presentation" class="active"><a href="/">Home</a></li>
-        <li role="presentation"><a href="/employees/">Employees</a></li>
-        <li role="presentation"><a href="#">Menu</a></li>
-    </ul>
-</div>--%>
 
 
 
 <img src="<c:url value="/resources/images/logo4.jpg"/>" class="img-responsive center-block"/>
 <hr>
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-light" style="background-color: #c4e3f3">
     <ul class="nav navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="/">
-                <h4>Home</h4>
+                <h4>Главная</h4>
                 <span class="sr-only">(current)</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/employees/list">
-                <h4>Employees</h4>
+                <h4>Наш персонал</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/menus/list">
-                <h4>Menu</h4>
+                <h4>Меню</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/dishes/list">
-                <h4>Dishes</h4>
+                <h4>Блюда</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ingredients/list">
+                <h4>Ингридиенты</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/warehouse/list">
+                <h4>Склад</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/contact/info">
+                <h4>Контакты</h4>
             </a>
         </li>
     </ul>
