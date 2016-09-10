@@ -177,6 +177,10 @@ public class InitDB {
         ingredient2.setName("Onion");
         ingredientDao.save(ingredient2);
 
+        Ingredient ingredient3 = new Ingredient();
+        ingredient3.setName("Meat");
+        ingredientDao.save(ingredient3);
+
         Warehouse warehouse1 = new Warehouse();
         warehouse1.setIngredient(ingredient1);
         warehouse1.setQuantity(500.0);

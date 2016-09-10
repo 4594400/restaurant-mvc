@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -56,6 +57,8 @@ public class MenuController {
         List<Dish> dishList = menu.getDishes();
         modelAndView.addObject("dishList", dishList);
 
+        modelAndView.addObject("dish", new Dish());
+
 
         Map<Dish, String> dishNameList = new HashMap<>();
         for (Dish dish: dishService.findAll()){
@@ -67,15 +70,17 @@ public class MenuController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/menus/addDish", method = RequestMethod.POST)
-    public String addDishToMenu(@ModelAttribute("menu") Menu menu, @ModelAttribute("dishList") List<Dish> dishList) {
-        /*if(result.hasErrors()) {
-            return "/menus/menuform"; ///change
-        }*/
-        //menuService.addDishToMenu(menu, dish); ///must be id
+    @RequestMapping(value = "/menus/{menuName}/addDish", method = RequestMethod.POST)
+    public String addDishToMenu(@PathVariable("menuName") String menuName, @ModelAttribute("dish") Dish dish) {
+        String dishName = dish.getName();
+        Dish actualDish = dishService.findByName(dishName);
+        Menu menu = menuService.findByName(menuName);
+        menu.getDishes().add(actualDish);
+        menuService.save(menu);
 
-        return "/menus/list";
+        System.out.println(menu.toString());
 
+        return "redirect:/menus/show/" + menuName;
     }
 
 

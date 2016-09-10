@@ -14,8 +14,8 @@ public class Warehouse implements Serializable{
 
 
     //@Id
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "ingredientId", unique = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ingredientId")
     private Ingredient ingredient;
 
     @Column(name = "quantity")
@@ -32,6 +32,11 @@ public class Warehouse implements Serializable{
         this.quantity = quantity;
         this.measure = measure;
         this.ingredient = ingredient;
+    }
+
+    ///////////////////////////////
+    public boolean isNew() {
+        return (this.id == null);
     }
 
 

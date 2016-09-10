@@ -57,7 +57,7 @@ public class DishController {
     }
 
     @RequestMapping(value = "dishes/add", method = RequestMethod.GET)
-    public String showAddEmployeeForm(Model model) {
+    public String showAddDishForm(Model model) {
 
         model.addAttribute("listOfDishCategory", DishCategory.values());
         // set default value

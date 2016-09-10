@@ -11,10 +11,10 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "ingredient", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "ingredient")
     private Warehouse warehouse;
 
     public Ingredient() {

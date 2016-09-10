@@ -38,7 +38,7 @@ public class IngredientDaoHiber implements IngredientDao {
     @Transactional
     public Ingredient load(Long id) {
         Ingredient result = sessionFactory.getCurrentSession().get(Ingredient.class, id);
-        if (result==null) {
+        if (result == null) {
             throw new RuntimeException("Cannot find Ingredient by id = " + id);
         }
         return result;
@@ -59,9 +59,6 @@ public class IngredientDaoHiber implements IngredientDao {
     public List<Ingredient> findAll() {
         return sessionFactory.getCurrentSession().createQuery("select i from Ingredient i").list();
     }
-
-
-
 
 
     public void setSessionFactory(SessionFactory sessionFactory) {

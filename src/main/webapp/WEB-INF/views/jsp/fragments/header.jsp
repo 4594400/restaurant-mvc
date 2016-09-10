@@ -62,7 +62,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/warehouse/list">
+            <a class="nav-link" href="/warehouses/list">
                 <h4>Склад</h4>
             </a>
         </li>

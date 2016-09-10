@@ -37,25 +37,23 @@
 
 <hr>
 
-<spring:url value="/menus/addDish" var="menuActionUrl" />
+<spring:url value="/menus/${menu.name}/addDish" var="menuActionUrl"/>
 
-<form:form action="${menuActionUrl}" modelAttribute="menu" method="post">
+<form:form action="${menuActionUrl}" modelAttribute="dish" method="post">
 
+    <spring:bind path="dish">
+        <label class="col-sm-2 control-label"><h4>Select a dish to add to the menu:</h4></label>
+        <div class="col-sm-2">
 
+            <form:select path="name" class="form-control" multiple="false">
+                <form:option value="NONE" label="--SELECT--"/>
+                <form:options items="${dishNameList.values()}"/>
+            </form:select>
+        </div>
+    </spring:bind>
 
-            <label class="col-sm-2 control-label"><h4>Select a dish to add to the menu:</h4></label>
-            <div class="col-sm-2">
-
-                <form:select path="${dish}" class="form-control" multiple="false">
-                    <form:option value="NONE" label="--SELECT--"/>
-                    <form:options items="${dishNameList.values()}" />
-                </form:select>
-
-            </div>
-
-    <button type="submit" class="btn-lg btn-primary " >Add dish</button>
+    <button type="submit" class="btn-lg btn-primary ">Add dish</button>
 </form:form>
-
 
 
 <%--<h3>Add Dish to Menu:</h3>
@@ -70,7 +68,6 @@
 </select>
 <button class="btn btn-default" onclick="addDishToMenu(${menu.id}, document.getElementById('dishId'))">Add Dish</button>
 </form>--%>
-
 
 
 <jsp:include page="../fragments/footer.jsp"/>

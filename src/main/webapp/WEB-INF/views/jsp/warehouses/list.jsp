@@ -35,13 +35,13 @@
                 <td>${warehouse.measure}</td>
 
                 <td style="align-items: center; width: 20px">
-                    <spring:url value="/warehouses/${warehouse.ingredient.id}/delete" var="deleteUrl"/>
+                    <spring:url value="/warehouses/${warehouse.id}/delete" var="deleteUrl"/>
                     <a href="${deleteUrl}">
                         <img src="<c:url value="/resources/images/garbage24.jpg"/>"/>
                     </a>
                 </td>
                 <td style="align-items: center; width: 20px">
-                    <spring:url value="/warehouses/${warehouse.ingredient.id}/update" var="updateUrl"/>
+                    <spring:url value="/warehouses/${warehouse.id}/update" var="updateUrl"/>
                     <a href="${updateUrl}">
                         <img src="<c:url value="/resources/images/edit24.png"/>"/>
                     </a>
