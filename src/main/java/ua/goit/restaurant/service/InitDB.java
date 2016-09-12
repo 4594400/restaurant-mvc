@@ -26,6 +26,8 @@ public class InitDB {
     private IngredientDao ingredientDao;
     @Autowired
     private WarehouseDao warehouseDao;
+    @Autowired
+    private PreparedDishDao preparedDishDao;
 
 
 
@@ -134,7 +136,7 @@ public class InitDB {
         order1.setDishes(breakfast);
         order1.setTableNumber(1);
         order1.setOrderDate(new java.util.Date());
-        order1.setOrderStatus(OrderStatus.OPENED);
+        //order1.setOrderStatus(OrderStatus.OPENED);
         orderDao.save(order1);
 
         Order order2 = new Order();
@@ -142,7 +144,7 @@ public class InitDB {
         order2.setDishes(dinner);
         order2.setTableNumber(2);
         order2.setOrderDate(new java.util.Date());
-        order2.setOrderStatus(OrderStatus.OPENED);
+        //order2.setOrderStatus(OrderStatus.OPENED);
         orderDao.save(order2);
 
         Order order3 = new Order();
@@ -150,7 +152,7 @@ public class InitDB {
         order3.setDishes(breakfast);
         order3.setTableNumber(3);
         order3.setOrderDate(new java.util.Date());
-        order3.setOrderStatus(OrderStatus.OPENED);
+        //order3.setOrderStatus(OrderStatus.OPENED);
         orderDao.save(order3);
 
         Menu menu1 = new Menu();
@@ -196,7 +198,11 @@ public class InitDB {
 
 
 
-
+        PreparedDish preparedDish = new PreparedDish();
+        preparedDish.setCooker(steve);
+        preparedDish.setDish(greek);
+        preparedDish.setPreparingDate(new java.util.Date());
+        preparedDishDao.save(preparedDish);
 
 
 

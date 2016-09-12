@@ -20,11 +20,11 @@ public class Order {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employeeId")
     private Employee waiter;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "dishes_to_orders",
             joinColumns = {@JoinColumn(name = "orderId")},
@@ -51,6 +51,11 @@ public class Order {
         this.tableNumber = tableNumber;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
+    }
+
+    ////////////////////////////////
+    public boolean isNew() {
+        return (this.id == null);
     }
 
     public Long getId() {

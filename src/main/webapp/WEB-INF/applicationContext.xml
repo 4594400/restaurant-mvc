@@ -21,6 +21,7 @@
     <bean id="menuService" class="ua.goit.restaurant.service.impl.MenuServiceImpl"/>
 
     <bean id="orderDao" class="ua.goit.restaurant.dao.hibernate.OrderDaoHiber"/>
+    <bean id="orderService" class="ua.goit.restaurant.service.impl.OrderServiceImpl"/>
 
 
     <bean id="ingredientDao" class="ua.goit.restaurant.dao.hibernate.IngredientDaoHiber"/>
@@ -28,6 +29,9 @@
 
     <bean id="warehouseService" class="ua.goit.restaurant.service.impl.WarehouseServiceImpl"/>
     <bean id="warehouseDao" class="ua.goit.restaurant.dao.hibernate.WarehouseDaoHiber"/>
+
+    <bean id="preparedDishDao" class="ua.goit.restaurant.dao.hibernate.PreparedDishDaoHiber"/>
+    <bean id="preparedDishService" class="ua.goit.restaurant.service.impl.PreparedDishServiceImpl"/>
 
 
 

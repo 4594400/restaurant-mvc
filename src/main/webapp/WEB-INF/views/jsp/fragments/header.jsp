@@ -42,6 +42,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/schema/tables">
+                <h4>Схема ресторана</h4>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/employees/list">
                 <h4>Наш персонал</h4>
             </a>
@@ -59,6 +64,11 @@
         <li class="nav-item">
             <a class="nav-link" href="/ingredients/list">
                 <h4>Ингридиенты</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/orders/list">
+                <h4>Заказы</h4>
             </a>
         </li>
         <li class="nav-item">

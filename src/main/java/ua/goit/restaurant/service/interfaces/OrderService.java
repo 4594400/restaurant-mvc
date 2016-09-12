@@ -1,6 +1,4 @@
-package ua.goit.restaurant.dao.interfaces;
-
-
+package ua.goit.restaurant.service.interfaces;
 
 
 import ua.goit.restaurant.model.Dish;
@@ -9,7 +7,7 @@ import ua.goit.restaurant.model.Order;
 import java.sql.Date;
 import java.util.List;
 
-public interface OrderDao {
+public interface OrderService {
     void save(Order order);
 
     void remove(Order order);
@@ -29,5 +27,4 @@ public interface OrderDao {
 
     public List<Order> findAllOpenedOrders();
     public List<Order> findAllClosedOrders();
-
 }
