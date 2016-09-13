@@ -62,6 +62,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/prepared/list">
+                <h4>Приготовленные блюда</h4>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/ingredients/list">
                 <h4>Ингридиенты</h4>
             </a>

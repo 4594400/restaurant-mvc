@@ -1,6 +1,7 @@
 package ua.goit.restaurant.model;
 
 import org.hibernate.annotations.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ public class Order {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "employeeId")
     private Employee waiter;
 
@@ -36,6 +37,9 @@ public class Order {
     private int tableNumber;
 
     @Column(name = "order_date")
+    @Type(type="date")
+    //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orderDate;
 
     @Column(name = "status")

@@ -5,6 +5,8 @@
 
 <body>
 
+<div style="width: 50%; margin-left: 20px">
+
 <table border="1" style="align-items: center" class="table table-striped">
     <tr>
         <th>Name</th>
@@ -22,6 +24,7 @@
 
 
 </table>
+</div>
 
 <jsp:include page="../fragments/footer.jsp" />
 </body>

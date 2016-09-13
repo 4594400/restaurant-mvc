@@ -48,6 +48,16 @@
             </div>
         </spring:bind>
 
+        <spring:bind path="birthday">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <label class="col-sm-2 control-label">Birthday</label>
+                <div class="col-sm-10">
+                    <form:input path="birthday" type="date" class="form-control " id="birthday" placeholder="Date" />
+                    <form:errors path="birthday" class="control-label" />
+                </div>
+            </div>
+        </spring:bind>
+
         <spring:bind path="phoneNumber">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Phone Number</label>

@@ -1,6 +1,9 @@
 package ua.goit.restaurant.model;
 
 
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,6 +19,8 @@ public class PreparedDish {
     private Dish dish;
 
     @Column
+    @Type(type = "date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date preparingDate;
 
     @OneToOne

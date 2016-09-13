@@ -63,6 +63,10 @@ public class InitDB {
         employeeDao.save(mary);
 
 
+
+
+
+
         Dish caesar = new Dish();
         caesar.setName("Caesar");
         caesar.setDishCategory(DishCategory.SALAD);
@@ -197,12 +201,25 @@ public class InitDB {
         warehouseDao.save(warehouse2);
 
 
+        Cook piter = new Cook();
+        piter.setName("Piter");
+        piter.setSurname("Jobson");
+        piter.setBirthday(Date.valueOf("1982-05-12"));
+        piter.setPhoneNumber("888-88-88");
+        piter.setPosition(Position.COOK);
+        piter.setSalary(2300.0);
+        //piter.setPreparedDishes();
+        employeeDao.save(piter);
+
 
         PreparedDish preparedDish = new PreparedDish();
-        preparedDish.setCooker(steve);
+        preparedDish.setCooker(piter);
         preparedDish.setDish(greek);
         preparedDish.setPreparingDate(new java.util.Date());
         preparedDishDao.save(preparedDish);
+
+
+
 
 
 

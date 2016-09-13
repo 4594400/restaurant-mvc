@@ -1,24 +1,22 @@
 package ua.goit.restaurant.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ua.goit.restaurant.model.Dish;
-import ua.goit.restaurant.model.Employee;
-import ua.goit.restaurant.model.Order;
-import ua.goit.restaurant.model.OrderStatus;
+import ua.goit.restaurant.model.*;
 import ua.goit.restaurant.service.interfaces.DishService;
 import ua.goit.restaurant.service.interfaces.EmployeeService;
 import ua.goit.restaurant.service.interfaces.OrderService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -40,9 +38,14 @@ public class OrderController {
 
     @RequestMapping(value = "/orders/list", method = RequestMethod.POST)
     public String saveOrUpdateOrder(@ModelAttribute("orderForm") @Validated Order order, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "/orders/orderform";
         }
+
+        String waiterName = order.getWaiter().getName();
+        Employee waiter = employeeService.findByName(waiterName);
+        order.setWaiter(waiter);
+
         orderService.save(order);
         return "redirect:/orders/list";
     }
@@ -73,9 +76,6 @@ public class OrderController {
     }
 
 
-
-
-
     @RequestMapping(value = "/orders/{id}/addDish", method = RequestMethod.POST)
     public String addDishToOrder(@PathVariable("id") Long id, @ModelAttribute("dish") Dish dish) {
         String dishName = dish.getName();
@@ -89,6 +89,7 @@ public class OrderController {
     @RequestMapping(value = "/orders/add", method = RequestMethod.GET)
     public String addOrder(ModelMap modelMap) {
         Order order = new Order();
+
         modelMap.addAttribute("orderForm", order);
         modelMap.addAttribute("listOfOrderStatus", OrderStatus.values());
 
@@ -98,11 +99,12 @@ public class OrderController {
     @RequestMapping(value = "/orders/{id}/update", method = RequestMethod.GET)
     public String updateOrder(@PathVariable("id") Long id, ModelMap modelMap) {
         Order order = orderService.load(id);
+       /* List<Dish> dishes = order.getDishes();
+        modelMap.addAttribute("updatedDishes", dishes);*/
         modelMap.addAttribute("orderForm", order);
 
         return "/orders/orderform";
     }
-
 
 
     @ModelAttribute("waiterNames")
@@ -122,6 +124,27 @@ public class OrderController {
         }
         return dishNames;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*@InitBinder
+    public void dataBinding(WebDataBinder binder) {
+        //binder.addValidators(userValidator, emailValidator);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+    }*/
+
 
 
 

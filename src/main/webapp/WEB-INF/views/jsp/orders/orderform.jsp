@@ -27,6 +27,7 @@
     <form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="${orderActionUrl}">
 
         <form:hidden path="id" />
+        <%--<form:hidden path="dishes" />--%>
 
         <spring:bind path="waiter.name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
@@ -50,6 +51,16 @@
             </div>
         </spring:bind>
 
+        <spring:bind path="orderDate">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <label class="col-sm-2 control-label">Date</label>
+                <div class="col-sm-10">
+                    <form:input path="orderDate" type="date" class="form-control " id="orderDate" placeholder="Date" />
+                    <form:errors path="orderDate" class="control-label" />
+                </div>
+            </div>
+        </spring:bind>
+
         <spring:bind path="orderStatus">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Status of order</label>
@@ -63,6 +74,7 @@
                 </div>
             </div>
         </spring:bind>
+
 
        <%-- <spring:bind path="dishCategory">
             <div class="form-group ${status.error ? 'has-error' : ''}">

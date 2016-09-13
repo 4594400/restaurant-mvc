@@ -11,30 +11,33 @@
 
 <hr>
 
+<div style="width: 50%; margin-left: 20px">
+
 <h1 style="color: #985f0d"> List of dishes: </h1>
 
-<table border="1" style="align-items: center" class="table table-striped">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Dish Category</th>
-        <th>Price</th>
-        <th>Weight</th>
 
-    </tr>
-    </thead>
-
-    <c:forEach items="${menu.dishes}" var="dishes">
+    <table border="1" style="align-items: center" class="table table-striped">
+        <thead>
         <tr>
-            <td>${dishes.name}</td>
-            <td>${dishes.dishCategory}</td>
-            <td>${dishes.price}</td>
-            <td>${dishes.weight}</td>
+            <th>Name</th>
+            <th>Dish Category</th>
+            <th>Price</th>
+            <th>Weight</th>
+
         </tr>
-    </c:forEach>
+        </thead>
 
-</table>
+        <c:forEach items="${menu.dishes}" var="dishes">
+            <tr>
+                <td>${dishes.name}</td>
+                <td>${dishes.dishCategory}</td>
+                <td>${dishes.price}</td>
+                <td>${dishes.weight}</td>
+            </tr>
+        </c:forEach>
 
+    </table>
+</div>
 <hr>
 
 <spring:url value="/menus/${menu.name}/addDish" var="menuActionUrl"/>

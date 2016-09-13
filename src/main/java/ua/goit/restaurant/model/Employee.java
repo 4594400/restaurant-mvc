@@ -2,6 +2,7 @@ package ua.goit.restaurant.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,6 +26,7 @@ public class Employee implements Serializable{
     private String surname;
 
     @Column(name = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Type(type="date")
     private Date birthday;
 

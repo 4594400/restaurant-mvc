@@ -14,7 +14,7 @@ public class Menu {
     private String name;
 
     ////////////////////////////////
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "menus_to_dishes",
             joinColumns = {@JoinColumn (name = "menuId")},

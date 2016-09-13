@@ -107,7 +107,5 @@ public class EmployeeController {
 
 
 
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+
 }
