@@ -8,7 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.goit.restaurant.model.*;
 import ua.goit.restaurant.service.interfaces.DishService;
 import ua.goit.restaurant.service.interfaces.EmployeeService;
@@ -20,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@SessionAttributes("updatedDishes")
 public class OrderController {
 
     @Autowired
@@ -37,14 +40,19 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/list", method = RequestMethod.POST)
-    public String saveOrUpdateOrder(@ModelAttribute("orderForm") @Validated Order order, BindingResult result) {
+    public String saveOrUpdateOrder(@ModelAttribute("updatedDishes") List<Dish> dishes, SessionStatus status, @ModelAttribute("orderForm") @Validated Order order, BindingResult result) {
         if (result.hasErrors()) {
             return "/orders/orderform";
         }
 
+        status.setComplete();
+        System.out.println(dishes.toString());
+        System.out.println("///////////////////////////////////////");
+
         String waiterName = order.getWaiter().getName();
         Employee waiter = employeeService.findByName(waiterName);
         order.setWaiter(waiter);
+        order.setDishes(dishes);
 
         orderService.save(order);
         return "redirect:/orders/list";
@@ -99,8 +107,10 @@ public class OrderController {
     @RequestMapping(value = "/orders/{id}/update", method = RequestMethod.GET)
     public String updateOrder(@PathVariable("id") Long id, ModelMap modelMap) {
         Order order = orderService.load(id);
-       /* List<Dish> dishes = order.getDishes();
-        modelMap.addAttribute("updatedDishes", dishes);*/
+        List<Dish> dishes = order.getDishes();
+
+        //redirectAttributes.addFlashAttribute("updatedDishes", dishes);
+        modelMap.addAttribute("updatedDishes", dishes);
         modelMap.addAttribute("orderForm", order);
 
         return "/orders/orderform";

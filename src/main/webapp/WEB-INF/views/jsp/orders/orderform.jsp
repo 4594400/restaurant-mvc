@@ -76,6 +76,8 @@
         </spring:bind>
 
 
+
+
        <%-- <spring:bind path="dishCategory">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Dish Category</label>
