@@ -22,7 +22,6 @@ public class Order {
     private Long id;
 
     @ManyToOne()
-    //@Cascade({CascadeType.MERGE, CascadeType.})
     @JoinColumn(name = "employeeId")
     private Employee waiter;
 

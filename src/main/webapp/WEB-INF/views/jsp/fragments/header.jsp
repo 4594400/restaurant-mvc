@@ -9,7 +9,7 @@
     <link href="${bootstrapCss}" rel="stylesheet"/>
 
     <spring:url value="/resources/css/mystyle.css" var="myCss"/>
-    <%--<link href="${myCss}" rel="stylesheet"/>--%>
+    <link href="${myCss}" rel="stylesheet"/>
 
     <style>
         .error {

@@ -24,9 +24,8 @@
             <div class="row">
                 <h4> Search by name</h4>
                 <div class="search">
-                        <%--<form:input path="searchingName" type="text" class="form-control input-sm" id="searchingName" placeholder="Search" />--%>
                     <input type="text" class="form-control input-sm" name="name" placeholder="Search"/>
-                    <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                    <button type="submit" class="btnn btn-primary btn-sm">Search</button>
                 </div>
             </div>
         </div>

@@ -187,6 +187,14 @@ public class InitDB {
         ingredient3.setName("Meat");
         ingredientDao.save(ingredient3);
 
+        Ingredient ingredient4 = new Ingredient();
+        ingredient4.setName("Chicken");
+        ingredientDao.save(ingredient4);
+
+        Ingredient ingredient5 = new Ingredient();
+        ingredient5.setName("Carrot");
+        ingredientDao.save(ingredient5);
+
         Warehouse warehouse1 = new Warehouse();
         warehouse1.setIngredient(ingredient1);
         warehouse1.setQuantity(500.0);
@@ -199,6 +207,12 @@ public class InitDB {
         warehouse2.setQuantity(100.0);
         warehouse2.setMeasure(Measure.TON);
         warehouseDao.save(warehouse2);
+
+        Warehouse warehouse3 = new Warehouse();
+        warehouse3.setIngredient(ingredient3);
+        warehouse3.setQuantity(50.0);
+        warehouse3.setMeasure(Measure.KILOGRAM);
+        warehouseDao.save(warehouse3);
 
 
         Cook piter = new Cook();

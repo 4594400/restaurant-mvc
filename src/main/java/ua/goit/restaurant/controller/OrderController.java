@@ -58,6 +58,8 @@ public class OrderController {
             System.out.println(updatedOrder.toString());
             orderService.save(updatedOrder);
         } else {
+            Employee waiter = employeeService.findByName(order.getWaiter().getName());
+            order.setWaiter(waiter);
             orderService.save(order);
         }
 

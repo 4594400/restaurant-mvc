@@ -48,7 +48,7 @@ public class WarehouseDaoHiber implements WarehouseDao{
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select w from Warehouse w where w.ingredient.name like :name");
         //Query query = session.createQuery("from Warehouse w inner join Ingredient i on w.ingredient.name  = i.id where w.ingredient.name = ingredientName");
-        query.setParameter("name", ingredientName);
+        query.setParameter("name", "%"+ ingredientName + "%");
         return (Warehouse) query.uniqueResult();
     }
 

@@ -28,12 +28,7 @@
 
         <form:errors path="*" cssClass="errorblock" element="div"/>
 
-        <%-- <form:hidden path="id" />--%>
-        <spring:bind path="id">
-        <div class="form-group ${status.error ? 'has-error' : ''}">
-            <form:input path="id" type="text" class="form-control " id="id" placeholder="id"/>
-            </div>
-        </spring:bind>
+         <form:hidden path="id" />
 
 
         <spring:bind path="waiter.name">
