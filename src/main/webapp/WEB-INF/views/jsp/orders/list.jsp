@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/header.jsp"/>
 
 <body>
 
@@ -11,7 +11,8 @@
 
     <h1 style="text-align: center; color: #23527c">Список заказов</h1>
 
-    <spring:url value="/orders/add" var="addUrl" />
+
+    <spring:url value="/orders/add" var="addUrl"/>
     <button class="btn btn-primary" onclick="location.href='${addUrl}'">Add Order</button>
     <br>
     <br>
@@ -57,6 +58,6 @@
 </div>
 <br/>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp"/>
 </body>
 </html>

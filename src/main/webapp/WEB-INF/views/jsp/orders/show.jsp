@@ -22,6 +22,7 @@
             <th>Dish Category</th>
             <th>Price</th>
             <th>Weight</th>
+            <th></th>
 
         </tr>
         </thead>
@@ -32,8 +33,19 @@
                 <td>${dishes.dishCategory}</td>
                 <td>${dishes.price}</td>
                 <td>${dishes.weight}</td>
+
+                <td style="align-items: center; width: 20px">
+                    <spring:url value="/orders/${order.id}/deleteDish/${dishes.id}" var="deleteDishFromOrderUrl"/>
+                    <a href="${deleteDishFromOrderUrl}">
+                        <img src="<c:url value="/resources/images/garbage24.jpg"/>"/>
+                    </a>
+                </td>
+
             </tr>
         </c:forEach>
+
+
+
 
     </table>
 </div>

@@ -19,10 +19,11 @@ import ua.goit.restaurant.service.interfaces.OrderService;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
-@SessionAttributes("updatedDishes")
+//@SessionAttributes("updatedDishes")
 public class OrderController {
 
     @Autowired
@@ -40,21 +41,27 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/orders/list", method = RequestMethod.POST)
-    public String saveOrUpdateOrder(@ModelAttribute("updatedDishes") List<Dish> dishes, SessionStatus status, @ModelAttribute("orderForm") @Validated Order order, BindingResult result) {
+    public String saveOrUpdateOrder(/*@ModelAttribute("updatedDishes") ArrayList<Dish> dishes, SessionStatus status,*/ @ModelAttribute("orderForm") @Validated Order order, BindingResult result) {
         if (result.hasErrors()) {
             return "/orders/orderform";
         }
 
-        status.setComplete();
-        System.out.println(dishes.toString());
-        System.out.println("///////////////////////////////////////");
+        if(order.getId()!=null) {
+            Order updatedOrder = orderService.load(order.getId());
 
-        String waiterName = order.getWaiter().getName();
-        Employee waiter = employeeService.findByName(waiterName);
-        order.setWaiter(waiter);
-        order.setDishes(dishes);
+            Employee waiter = employeeService.findByName(order.getWaiter().getName());
+            updatedOrder.setWaiter(waiter);
+            updatedOrder.setTableNumber(order.getTableNumber());
+            updatedOrder.setOrderDate(order.getOrderDate());
+            updatedOrder.setOrderStatus(order.getOrderStatus());
 
-        orderService.save(order);
+            System.out.println(updatedOrder.toString());
+            orderService.save(updatedOrder);
+        } else {
+            orderService.save(order);
+        }
+
+
         return "redirect:/orders/list";
     }
 
@@ -93,6 +100,23 @@ public class OrderController {
         orderService.save(order);
         return "redirect:/orders/show/" + order.getId();
     }
+
+    @RequestMapping(value = "/orders/{orderId}/deleteDish/{dishId}", method = RequestMethod.GET)
+    public String deleteDishFromOrder(@PathVariable("orderId") Long orderId, @PathVariable("dishId") Long dishId) {
+        Order order = orderService.load(orderId);
+        List<Dish> dishes = order.getDishes();
+        Iterator<Dish> iterator = dishes.iterator();
+        while (iterator.hasNext()) {
+            Dish dish = iterator.next();
+            if(dish.getId()==dishId) {
+                iterator.remove();
+            }
+        }
+        orderService.save(order);
+        return "redirect:/orders/show/" + order.getId();
+    }
+
+
 
     @RequestMapping(value = "/orders/add", method = RequestMethod.GET)
     public String addOrder(ModelMap modelMap) {

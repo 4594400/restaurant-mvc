@@ -8,10 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ua.goit.restaurant.model.Ingredient;
 import ua.goit.restaurant.model.Measure;
 import ua.goit.restaurant.model.Warehouse;
@@ -36,9 +33,9 @@ public class WarehouseController {
     @RequestMapping(value = "/warehouses/list", method = RequestMethod.GET)
     public String warehouseCtrl(Model model) {
         List<Warehouse> warehouses = warehouseService.findAll();
-        for (Warehouse warehouse : warehouses) {
+        /*for (Warehouse warehouse : warehouses) {
             System.out.println(warehouse.toString());
-        }
+        }*/
         model.addAttribute("warehouses", warehouses);
         return "/warehouses/list";
     }
@@ -89,5 +86,16 @@ public class WarehouseController {
     public String deleteWarehouseCtlr(@PathVariable("id") Long id) {
         warehouseService.remove(warehouseService.load(id));
         return "redirect:/warehouses/list";
+    }
+
+    @RequestMapping(value = "/warehouses/search", method = RequestMethod.GET)
+    public String searchByName(@RequestParam("name") String name, ModelMap modelMap) {
+        System.out.println(name);
+        Warehouse warehouse = warehouseService.findByName(name);
+        System.out.println("****************************");
+        System.out.println(warehouse.toString());
+        System.out.println("****************************");
+        modelMap.addAttribute("warehouse", warehouse);
+        return "/warehouses/search";
     }
 }

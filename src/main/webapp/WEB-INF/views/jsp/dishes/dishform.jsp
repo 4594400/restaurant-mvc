@@ -26,6 +26,8 @@
 
     <form:form class="form-horizontal" method="post" modelAttribute="dishForm" action="${dishActionUrl}">
 
+        <form:errors path="*" cssClass="errorblock" element="div"/>
+
         <form:hidden path="id" />
 
         <spring:bind path="name">
@@ -57,7 +59,7 @@
                 <label class="col-sm-2 control-label">Price</label>
                 <div class="col-sm-10">
                     <form:input path="price" class="form-control" id="price" placeholder="Price" />
-                    <form:errors path="price" class="control-label" />
+                    <form:errors path="price" class="control-label">Incorrect value </form:errors>
                 </div>
             </div>
         </spring:bind>

@@ -76,6 +76,9 @@
                         <form:option value="NONE">--SELECT--</form:option>
                         <form:options items="${listOfPositions}"/>
                     </form:select>
+                    <form:errors path="position" class="control-label">
+                        <div id="position.errors" class="error">Please select position!</div>
+                    </form:errors>
                 </div>
             </div>
         </spring:bind>
@@ -85,7 +88,9 @@
                 <label class="col-sm-2 control-label">Salary</label>
                 <div class="col-sm-10">
                     <form:input path="salary" rows="5" class="form-control" id="salary" placeholder="salary" />
-                    <form:errors path="salary" class="control-label" />
+                    <form:errors path="salary" class="control-label">
+                        <div id="salary.errors" class="error">Incorrect value!</div>
+                    </form:errors>
                 </div>
             </div>
         </spring:bind>

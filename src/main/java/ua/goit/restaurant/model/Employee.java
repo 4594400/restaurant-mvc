@@ -139,7 +139,8 @@ public class Employee implements Serializable{
         if (phoneNumber != null ? !phoneNumber.equals(employee.phoneNumber) : employee.phoneNumber != null)
             return false;
         if (position != employee.position) return false;
-        return salary != null ? salary.equals(employee.salary) : employee.salary == null;
+        if (salary != null ? !salary.equals(employee.salary) : employee.salary != null) return false;
+        return orders != null ? orders.equals(employee.orders) : employee.orders == null;
 
     }
 
@@ -151,6 +152,7 @@ public class Employee implements Serializable{
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
         result = 31 * result + (salary != null ? salary.hashCode() : 0);
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
         return result;
     }
 

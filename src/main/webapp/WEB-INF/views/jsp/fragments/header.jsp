@@ -1,18 +1,35 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <head>
-<title>Spring MVC Form Handling Example</title>
+    <title>Spring MVC Form Handling Example</title>
 
-<spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
+    <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCss"/>
+    <link href="${bootstrapCss}" rel="stylesheet"/>
+
+    <spring:url value="/resources/css/mystyle.css" var="myCss"/>
+    <%--<link href="${myCss}" rel="stylesheet"/>--%>
+
+    <style>
+        .error {
+            color: #ff0000;
+        }
+
+        .errorblock {
+            color: #000;
+            background-color: #ffEEEE;
+            border: 3px solid #ff0000;
+            padding: 8px;
+            margin: 16px;
+        }
+    </style>
 </head>
 
-<spring:url value="/" var="urlHome" />
-<spring:url value="/login" var="login" />
-<spring:url value="/logout" var="logout" />
-<spring:url value="/users/add" var="urlAddUser" />
+<spring:url value="/" var="urlHome"/>
+<spring:url value="/login" var="login"/>
+<spring:url value="/logout" var="logout"/>
+<spring:url value="/users/add" var="urlAddUser"/>
 
 <%--<nav class="navbar navbar-inverse ">
 	<div class="container">
@@ -26,8 +43,6 @@
 		</div>
 	</div>
 </nav>--%>
-
-
 
 
 <img src="<c:url value="/resources/images/logo4.jpg"/>" class="img-responsive center-block"/>

@@ -1,13 +1,13 @@
-<%@ page session="false"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/header.jsp"/>
 
 <div class="container">
 
@@ -19,15 +19,22 @@
             <h1>Update Order</h1>
         </c:otherwise>
     </c:choose>
-    <br />
+    <br/>
 
 
-    <spring:url value="/orders/list" var="orderActionUrl" />
+    <spring:url value="/orders/list" var="orderActionUrl"/>
 
     <form:form class="form-horizontal" method="post" modelAttribute="orderForm" action="${orderActionUrl}">
 
-        <form:hidden path="id" />
-        <%--<form:hidden path="dishes" />--%>
+        <form:errors path="*" cssClass="errorblock" element="div"/>
+
+        <%-- <form:hidden path="id" />--%>
+        <spring:bind path="id">
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <form:input path="id" type="text" class="form-control " id="id" placeholder="id"/>
+            </div>
+        </spring:bind>
+
 
         <spring:bind path="waiter.name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
@@ -45,8 +52,11 @@
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Number of table</label>
                 <div class="col-sm-10">
-                    <form:input path="tableNumber" type="text" class="form-control " id="tableNumber" placeholder="Number of table" />
-                    <form:errors path="tableNumber" class="control-label" />
+                    <form:input path="tableNumber" type="text" class="form-control " id="tableNumber"
+                                placeholder="Number of table"/>
+                    <form:errors path="tableNumber" class="control-label">
+                        <div id="tableNumber.errors" class="error">Incorrect value!</div>
+                    </form:errors>
                 </div>
             </div>
         </spring:bind>
@@ -55,8 +65,8 @@
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Date</label>
                 <div class="col-sm-10">
-                    <form:input path="orderDate" type="date" class="form-control " id="orderDate" placeholder="Date" />
-                    <form:errors path="orderDate" class="control-label" />
+                    <form:input path="orderDate" type="date" class="form-control " id="orderDate" placeholder="Date"/>
+                    <form:errors path="orderDate" class="control-label"/>
                 </div>
             </div>
         </spring:bind>
@@ -70,28 +80,28 @@
                         <form:option value="NONE">--SELECT--</form:option>
                         <form:options items="${listOfOrderStatus}"/>
                     </form:select>
+                    <form:errors path="orderStatus" class="control-label">
+                        <div id="orderStatus.errors" class="error">Please select status!</div>
+                    </form:errors>
 
                 </div>
             </div>
         </spring:bind>
 
 
+        <%-- <spring:bind path="dishCategory">
+             <div class="form-group ${status.error ? 'has-error' : ''}">
+                 <label class="col-sm-2 control-label">Dish Category</label>
+                 <div class="col-sm-10">
 
+                     <form:select path="dishCategory" class="form-control">
+                         <form:option value="NONE">--SELECT--</form:option>
+                         <form:options items="${listOfDishCategory}"/>
+                     </form:select>
 
-       <%-- <spring:bind path="dishCategory">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Dish Category</label>
-                <div class="col-sm-10">
-                    
-                    <form:select path="dishCategory" class="form-control">
-                        <form:option value="NONE">--SELECT--</form:option>
-                        <form:options items="${listOfDishCategory}"/>
-                    </form:select>
-                    
-                </div>
-            </div>
-        </spring:bind>--%>
-
+                 </div>
+             </div>
+         </spring:bind>--%>
 
 
         <div class="form-group">
@@ -113,7 +123,7 @@
 
 </div>
 
-<jsp:include page="../fragments/footer.jsp" />
+<jsp:include page="../fragments/footer.jsp"/>
 
 </body>
 </html>
