@@ -9,7 +9,7 @@
 
 <div style="width: 50%; margin-left: 20px">
 
-<h1 style="text-align: center; color: #23527c">Employees our's restaurant</h1>
+<h1 style="text-align: center; color: #23527c">Сотрудники нашего ресторана</h1>
 
 <spring:url value="/employees/add" var="addUrl" />
 <button class="btn btn-primary" onclick="location.href='${addUrl}'">Add Employee</button>
@@ -19,9 +19,9 @@
     <table border="1" style="align-items: center" class="table table-striped">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Position</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Должность</th>
             <th></th>
             <th></th>
         </tr>

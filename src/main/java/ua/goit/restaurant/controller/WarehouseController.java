@@ -90,12 +90,12 @@ public class WarehouseController {
 
     @RequestMapping(value = "/warehouses/search", method = RequestMethod.GET)
     public String searchByName(@RequestParam("name") String name, ModelMap modelMap) {
-        System.out.println(name);
+        if (name==null || name=="") {
+            return "redirect:/warehouses/list";
+        } else {
         Warehouse warehouse = warehouseService.findByName(name);
-        System.out.println("****************************");
-        System.out.println(warehouse.toString());
-        System.out.println("****************************");
         modelMap.addAttribute("warehouse", warehouse);
         return "/warehouses/search";
+        }
     }
 }

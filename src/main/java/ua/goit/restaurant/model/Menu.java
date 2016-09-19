@@ -1,6 +1,8 @@
 package ua.goit.restaurant.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class Menu {
         this.dishes = dishes;
     }
 ////////////////////////////////
+    @JsonIgnore
     public boolean isNew() {
         return (this.id == null);
     }

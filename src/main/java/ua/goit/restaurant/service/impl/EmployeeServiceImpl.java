@@ -41,14 +41,27 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public Employee findByName(String name) {
-        return employeeDao.findByName(name);
+    public List<Employee> findAll() {
+        return employeeDao.findAll();
     }
 
     @Override
     @Transactional
-    public List<Employee> findAll() {
-        return employeeDao.findAll();
+    public Employee findByName(String name) {
+        return employeeDao.findByName(name);
+    }
+
+
+    @Override
+    @Transactional
+    public Employee findBySurname(String surname) {
+        return employeeDao.findBySurname(surname);
+    }
+
+    @Override
+    @Transactional
+    public Employee findByNameAndSurname(String name, String surname) {
+        return employeeDao.findByNameAndSurname(name, surname);
     }
 
     public void setEmployeeDao(EmployeeDao employeeDao) {

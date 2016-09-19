@@ -1,6 +1,8 @@
 package ua.goit.restaurant.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -27,10 +29,12 @@ public class Dish {
     private Double weight;
 
     //Only for mapping
+    @JsonIgnore
     @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
     private List<Order> order;
 
     //Only for mapping
+    @JsonIgnore
     @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
     private List<Menu> menus;
 
@@ -47,6 +51,7 @@ public class Dish {
     }
 
     ///////////////////////////////
+    @JsonIgnore
     public boolean isNew() {
         return (this.id == null);
     }

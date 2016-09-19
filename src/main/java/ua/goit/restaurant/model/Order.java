@@ -1,5 +1,6 @@
 package ua.goit.restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -58,6 +59,7 @@ public class Order {
     }
 
     ////////////////////////////////
+    @JsonIgnore
     public boolean isNew() {
         return (this.id == null);
     }

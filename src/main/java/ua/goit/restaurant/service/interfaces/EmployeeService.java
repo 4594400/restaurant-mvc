@@ -14,8 +14,10 @@ public interface EmployeeService {
     void remove(Employee employee);
     void removeAll();
     Employee load(Long id);
-    Employee findByName(String name);
     List<Employee> findAll();
+    Employee findByName(String name);
+    Employee findBySurname(String surname);
+    Employee findByNameAndSurname(String name, String surname);
 
 
 

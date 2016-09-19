@@ -35,32 +35,32 @@ public class InitDB {
     public void init(){
         System.out.println("*** INIT DB START ***");
 
-        Employee john = new Employee();
-        john.setName("John");
-        john.setSurname("Smith");
-        john.setBirthday(Date.valueOf("1980-10-22"));
-        john.setPhoneNumber("111-11-11");
-        john.setPosition(Position.WAITER);
-        john.setSalary(1050.0);
-        employeeDao.save(john);
+        Employee alfred = new Employee();
+        alfred.setName("Альфред");
+        alfred.setSurname("Котов");
+        alfred.setBirthday(Date.valueOf("1980-10-22"));
+        alfred.setPhoneNumber("111-11-11");
+        alfred.setPosition(Position.MANAGER);
+        alfred.setSalary(1050.0);
+        employeeDao.save(alfred);
 
-        Employee steve = new Employee();
-        steve.setName("Steve");
-        steve.setSurname("Jonson");
-        steve.setBirthday(Date.valueOf("1995-05-25"));
-        steve.setPhoneNumber("222-22-22");
-        steve.setPosition(Position.WAITER);
-        steve.setSalary(1250.0);
-        employeeDao.save(steve);
+        Employee jenny = new Employee();
+        jenny.setName("Джени");
+        jenny.setSurname("Псакова");
+        jenny.setBirthday(Date.valueOf("1995-05-25"));
+        jenny.setPhoneNumber("222-22-22");
+        jenny.setPosition(Position.ADMINISTRATOR);
+        jenny.setSalary(1250.0);
+        employeeDao.save(jenny);
 
-        Employee mary = new Employee();
-        mary.setName("Mary");
-        mary.setSurname("Smith");
-        mary.setBirthday(Date.valueOf("1991-02-15"));
-        mary.setPhoneNumber("333-33-33");
-        mary.setPosition(Position.WAITER);
-        mary.setSalary(1450.0);
-        employeeDao.save(mary);
+        Employee billy = new Employee();
+        billy.setName("Билли");
+        billy.setSurname("Гейтов");
+        billy.setBirthday(Date.valueOf("1991-02-15"));
+        billy.setPhoneNumber("333-33-33");
+        billy.setPosition(Position.WAITER);
+        billy.setSalary(1450.0);
+        employeeDao.save(billy);
 
 
 
@@ -136,7 +136,7 @@ public class InitDB {
 
 
         Order order1 = new Order();
-        order1.setWaiter(employeeDao.findByName("John"));
+        order1.setWaiter(employeeDao.findByName("Билли"));
         order1.setDishes(breakfast);
         order1.setTableNumber(1);
         order1.setOrderDate(new java.util.Date());
@@ -144,7 +144,7 @@ public class InitDB {
         orderDao.save(order1);
 
         Order order2 = new Order();
-        order2.setWaiter(employeeDao.findByName("Steve"));
+        order2.setWaiter(employeeDao.findByName("Билли"));
         order2.setDishes(dinner);
         order2.setTableNumber(2);
         order2.setOrderDate(new java.util.Date());
@@ -152,7 +152,7 @@ public class InitDB {
         orderDao.save(order2);
 
         Order order3 = new Order();
-        order3.setWaiter(employeeDao.findByName("Mary"));
+        order3.setWaiter(employeeDao.findByName("Билли"));
         order3.setDishes(breakfast);
         order3.setTableNumber(3);
         order3.setOrderDate(new java.util.Date());
@@ -160,17 +160,17 @@ public class InitDB {
         orderDao.save(order3);
 
         Menu menu1 = new Menu();
-        menu1.setName("Breakfast");
+        menu1.setName("Завтрак");
         menu1.setDishes(breakfast);
         menuDao.save(menu1);
 
         Menu menu2 = new Menu();
-        menu2.setName("Dinner");
+        menu2.setName("Обед");
         menu2.setDishes(dinner);
         menuDao.save(menu2);
 
         Menu menu3 = new Menu();
-        menu3.setName("Supper");
+        menu3.setName("Ужин");
         menu3.setDishes(supper);
         menuDao.save(menu3);
 
@@ -215,19 +215,19 @@ public class InitDB {
         warehouseDao.save(warehouse3);
 
 
-        Cook piter = new Cook();
-        piter.setName("Piter");
-        piter.setSurname("Jobson");
-        piter.setBirthday(Date.valueOf("1982-05-12"));
-        piter.setPhoneNumber("888-88-88");
-        piter.setPosition(Position.COOK);
-        piter.setSalary(2300.0);
+        Cook gena = new Cook();
+        gena.setName("Геннадий");
+        gena.setSurname("Киссин");
+        gena.setBirthday(Date.valueOf("1982-05-12"));
+        gena.setPhoneNumber("888-88-88");
+        gena.setPosition(Position.COOK);
+        gena.setSalary(2300.0);
         //piter.setPreparedDishes();
-        employeeDao.save(piter);
+        employeeDao.save(gena);
 
 
         PreparedDish preparedDish = new PreparedDish();
-        preparedDish.setCooker(piter);
+        preparedDish.setCooker(gena);
         preparedDish.setDish(greek);
         preparedDish.setPreparingDate(new java.util.Date());
         preparedDishDao.save(preparedDish);

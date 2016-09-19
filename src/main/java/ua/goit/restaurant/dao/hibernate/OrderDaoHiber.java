@@ -1,6 +1,8 @@
 package ua.goit.restaurant.dao.hibernate;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.restaurant.dao.interfaces.OrderDao;
 import ua.goit.restaurant.model.Dish;
@@ -59,17 +61,6 @@ public class OrderDaoHiber implements OrderDao {
         return result;
     }
 
-    @Override
-    @Transactional
-    public void addDishToOrder(Dish dish, Order order) {
-
-    }
-
-    @Override
-    @Transactional
-    public void deleteDishFromOrder(Dish dish, Order orders) {
-
-    }
 
     @Override
     @Transactional
@@ -80,31 +71,36 @@ public class OrderDaoHiber implements OrderDao {
 
     @Override
     @Transactional
+    public List<Order> findAllOpenedOrders() {
+        return sessionFactory.getCurrentSession().createQuery("select o from Order o where o.orderStatus='OPENED'").list();
+    }
+
+    @Override
+    @Transactional
+    public List<Order> findAllClosedOrders() {
+        return sessionFactory.getCurrentSession().createQuery("select o from Order o where o.orderStatus='CLOSED'").list();
+    }
+
+
+
+    @Override
+    @Transactional
     public List<Order> findByWaiterName(String waiterName) {
+        //TODO
         return null;
     }
 
     @Override
     @Transactional
     public List<Order> findByDate(Date date) {
+        //TODO
         return null;
     }
 
     @Override
     @Transactional
     public List<Order> findByTableNumber(int tableNumber) {
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public List<Order> findAllOpenedOrders() {
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public List<Order> findAllClosedOrders() {
+        //TODO
         return null;
     }
 

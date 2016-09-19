@@ -11,27 +11,21 @@
 
 <div style="width: 50%; margin-left: 20px">
 
-    <h1 style="text-align: center; color: #23527c">List of ingredient in stock</h1>
 
-
-    <br>
-    <br>
-
+    <h2 style="text-align: center; color: #23527c">Список ингридиентов на складе</h2>
+    <hr>
 
     <spring:url value="/warehouses/search" var="warehouseActionUrl"/>
     <form:form class="form-horizontal" method="get" action="${warehouseActionUrl}">
         <div class="container">
             <div class="row">
-                <h4> Search by name</h4>
                 <div class="search">
-                    <input type="text" class="form-control input-sm" name="name" placeholder="Search"/>
-                    <button type="submit" class="btnn btn-primary btn-sm">Search</button>
+                    <input type="text" class="form-control input-sm" name="name" placeholder="Введите название"/>
+                    <button type="submit" class="btnn btn-primary btn-sm">Поиск</button>
                 </div>
             </div>
         </div>
     </form:form>
-
-    <hr>
 
     <table border="1" style="align-items: center" class="table table-striped">
         <thead>

@@ -62,38 +62,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/employees/list">
+            <a class="nav-link" href="/ouremployees/list">
                 <h4>Наш персонал</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/menus/list">
-                <h4>Меню</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/dishes/list">
-                <h4>Блюда</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/prepared/list">
-                <h4>Приготовленные блюда</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ingredients/list">
-                <h4>Ингридиенты</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/orders/list">
-                <h4>Заказы</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/warehouses/list">
-                <h4>Склад</h4>
             </a>
         </li>
         <li class="nav-item">
@@ -101,6 +71,53 @@
                 <h4>Контакты</h4>
             </a>
         </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="/menus/list">
+                <h4 style="color: coral">Меню</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/dishes/list">
+                <h4 style="color: coral">Блюда</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/employees/list">
+                <h4 style="color: coral">Персонал</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/warehouses/list">
+                <h4 style="color: coral">Склад</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/orders/list">
+                <h4 style="color: coral">История заказов</h4>
+            </a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="/prepared/list">
+                <h4 style="color: coral">Приготовленные блюда</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/ingredients/list">
+                <h4 style="color: coral">Ингридиенты</h4>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/rest">
+                <h4 style="color: #0f0f0f">REST</h4>
+            </a>
+        </li>
+
+
+
     </ul>
 
 </nav>

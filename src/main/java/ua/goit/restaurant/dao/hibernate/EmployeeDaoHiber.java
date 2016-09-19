@@ -46,6 +46,13 @@ public class EmployeeDaoHiber implements EmployeeDao {
 
     @Override
     @Transactional
+    public List<Employee> findAll() {
+        return sessionFactory.getCurrentSession().createQuery("select e from Employee e").list();
+
+    }
+
+    @Override
+    @Transactional
     public Employee findByName(String name) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select e from Employee e where e.name like :name");
@@ -54,12 +61,21 @@ public class EmployeeDaoHiber implements EmployeeDao {
     }
 
     @Override
-    @Transactional
-    public List<Employee> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("select e from Employee e").list();
-
+    public Employee findBySurname(String surname) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e from Employee e where e.surname like :surname");
+        query.setParameter("surname", surname);
+        return (Employee) query.uniqueResult();
     }
 
+    @Override
+    public Employee findByNameAndSurname(String name, String surname) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e from Employee e where e.name=:name AND e.surname=:surname");
+        query.setParameter("name", name);
+        query.setParameter("surname", surname);
+        return (Employee) query.uniqueResult();
+    }
 
 
 

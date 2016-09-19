@@ -2,7 +2,7 @@
 <div class="footer navbar-fixed-bottom">
 	<hr>
 	<footer>
-		<p>&copy; Doc Design 2016</p>
+		<p style="text-align: right">&copy; Doc Design 2016</p>
 	</footer>
 </div>
 

@@ -1,5 +1,6 @@
 package ua.goit.restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -41,6 +42,7 @@ public class Employee implements Serializable{
     private Double salary;
 
 //Only for mapping
+    @JsonIgnore
     @OneToMany(mappedBy = "waiter", cascade = CascadeType.ALL)
     private List<Order> orders;
 
@@ -58,6 +60,7 @@ public class Employee implements Serializable{
     }
 
     ///////////////////////////////////
+    @JsonIgnore
     public boolean isNew() {
         return (this.Id == null);
     }

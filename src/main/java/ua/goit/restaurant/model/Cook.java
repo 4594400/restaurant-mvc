@@ -1,5 +1,7 @@
 package ua.goit.restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -8,6 +10,7 @@ import java.util.List;
 @Entity
 public class Cook extends Employee{
 
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "employeeId")
     private List<PreparedDish> preparedDishes;

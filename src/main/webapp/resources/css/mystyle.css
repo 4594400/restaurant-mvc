@@ -16,9 +16,9 @@
 
 .search input {
     position: absolute;
-    width: 0px;
+    /*width: 0px;*/
     float: Left;
-    margin-left: 210px;
+    /*margin-left: 210px;*/
     -webkit-transition: all 0.7s ease-in-out;
     -moz-transition: all 0.7s ease-in-out;
     -o-transition: all 0.7s ease-in-out;

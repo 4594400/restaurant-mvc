@@ -46,18 +46,6 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     @Transactional
-    public void addDishToOrder(Dish dish, Order order) {
-        orderDao.addDishToOrder(dish, order);
-    }
-
-    @Override
-    @Transactional
-    public void deleteDishFromOrder(Dish dish, Order order) {
-        orderDao.deleteDishFromOrder(dish, order);
-    }
-
-    @Override
-    @Transactional
     public void closeOrder(Order order) {
         orderDao.closeOrder(order);
     }
