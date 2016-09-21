@@ -3,25 +3,25 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
-<jsp:include page="../fragments/header.jsp"/>
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <body>
 
 <div style="width: 50%; margin-left: 20px">
 
-    <h1 style="text-align: center; color: #761c19">Order: ${order.id}</h1>
+    <h2 style="text-align: center; color: #761c19">Order: ${order.id}</h2>
 
     <hr>
 
-    <h1 style="color: #985f0d"> List of dishes: </h1>
+    <h1 style="color: #985f0d"> Список блюд: </h1>
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
-            <th>Name</th>
-            <th>Dish Category</th>
-            <th>Price</th>
-            <th>Weight</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Вес</th>
             <th></th>
 
         </tr>
@@ -59,7 +59,7 @@
 <form:form action="${menuActionUrl}" modelAttribute="dish" method="post">
 
     <spring:bind path="dish">
-        <label class="col-sm-2 control-label"><h4>Select a dish to add to the order:</h4></label>
+        <label class="col-sm-2 control-label"><h4>Выберите блюдо для добавления в заказ:</h4></label>
         <div class="col-sm-2">
 
             <form:select path="name" class="form-control" multiple="false">
@@ -69,7 +69,7 @@
         </div>
     </spring:bind>
 
-    <button type="submit" class="btn-lg btn-primary ">Add dish</button>
+    <button type="submit" class="btn-lg btn-primary ">Добавить</button>
 </form:form>
 
 

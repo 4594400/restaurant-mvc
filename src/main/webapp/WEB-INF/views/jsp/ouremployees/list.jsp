@@ -7,11 +7,11 @@
 
 <body>
 
-<div style="width: 60%; margin-left: 20px">
+<div style="width: 60%; margin-left: 100px">
 
     <h1 style="text-align: center; color: #23527c">Наш персонал</h1>
 
-    <table border="1" style="align-items: center" class="table ">
+    <table border="0.2" style="align-items: center" class="table ">
 
         <tr>
             <td style="align-items: center" ; width="20%">

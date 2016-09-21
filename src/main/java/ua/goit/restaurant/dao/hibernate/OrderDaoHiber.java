@@ -51,12 +51,24 @@ public class OrderDaoHiber implements OrderDao {
         }
     }
 
-    @Override
+    /*@Override
     @Transactional
     public Order load(Long id) {
         Order result = sessionFactory.getCurrentSession().get(Order.class, id);
         if(result==null) {
             throw new RuntimeException("Cannot find Dish by id = " + id);
+        }
+        return result;
+    }*/
+
+    @Override
+    @Transactional
+    public Order load(Long id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select o from Order o where o.id = :id");
+        query.setParameter("id", id);
+        Order result = (Order) query.uniqueResult();
+        if(result==null) {
+            throw new RuntimeException("Cannot find Order by id = " + id);
         }
         return result;
     }

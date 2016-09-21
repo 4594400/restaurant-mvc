@@ -35,92 +35,68 @@
 
 
 <nav class="navbar navbar-inverse ">
-	<div class="container">
-		<%--<div class="navbar-header">
-			<a class="navbar-brand" href="${login}">Log in</a>
-		</div>--%>
-		<div id="logbar">
-			<ul class="nav navbar-nav navbar-right">
+    <div class="container">
+        <%--<div class="navbar-header">
+            <a class="navbar-brand" href="${login}">Log in</a>
+        </div>--%>
+        <div id="logbar">
+            <ul class="nav navbar-nav navbar-right">
                 <li><a href="${index}">Site</a></li>
                 <li><a href="${admin}">Admin</a></li>
-			</ul>
-		</div>
-	</div>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 
 <img src="<c:url value="/resources/images/logo4.jpg"/>" class="img-responsive center-block"/>
 <hr>
 
-<nav class="navbar navbar-light" style="background-color: #c4e3f3">
+<nav class="navbar navbar-light" style="background-color: darkorange">
     <ul class="nav navbar-nav">
+
         <li class="nav-item active">
-            <a class="nav-link" href="/">
-                <h4 style="font-weight: bold">Главная</h4>
-                <span class="sr-only">(current)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/schema/tables">
-                <h4 style="font-weight: bold">Схема ресторана</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/ouremployees/list">
-                <h4 style="font-weight: bold">Наш персонал</h4>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/contact/info">
-                <h4 style="font-weight: bold">Контакты</h4>
-            </a>
-        </li>
-
-
-        <%--<li class="nav-item">
             <a class="nav-link" href="/menus/list">
-                <h4 style="color: coral">Меню</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">Меню</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/dishes/list">
-                <h4 style="color: coral">Блюда</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">Блюда</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/employees/list">
-                <h4 style="color: coral">Персонал</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">Персонал</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/warehouses/list">
-                <h4 style="color: coral">Склад</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">Склад</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/orders/list">
-                <h4 style="color: coral">История заказов</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">История заказов</h4>
             </a>
         </li>
 
 
         <li class="nav-item">
             <a class="nav-link" href="/prepared/list">
-                <h4 style="color: coral">Приготовленные блюда</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">Приготовленные блюда</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/ingredients/list">
-                <h4 style="color: coral">Ингридиенты</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">Ингридиенты</h4>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/rest">
-                <h4 style="color: #0f0f0f">REST</h4>
+                <h4 style="color: #0f0f0f; font-weight: bold">REST</h4>
             </a>
-        </li>--%>
-
-
+        </li>
 
     </ul>
 

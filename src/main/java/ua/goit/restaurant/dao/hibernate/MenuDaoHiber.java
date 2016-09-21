@@ -3,6 +3,7 @@ package ua.goit.restaurant.dao.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.restaurant.dao.interfaces.MenuDao;
 import ua.goit.restaurant.model.Dish;
@@ -36,20 +37,33 @@ public class MenuDaoHiber implements MenuDao {
 
     }
 
+    /*@Override
+    @Transactional
+    public Menu load(Long id) {
+        Menu result = (Menu) sessionFactory.getCurrentSession().get(Menu.class, id);
+        if(result==null) {
+            throw new RuntimeException("Cannot find Menu by id = " + id);
+        }
+        return result;
+    }*/
+
     @Override
     @Transactional
     public Menu load(Long id) {
-        Menu result = sessionFactory.getCurrentSession().get(Menu.class, id);
+        Query query = sessionFactory.getCurrentSession().createQuery("select m from Menu m where m.id = :id");
+        query.setParameter("id", id);
+        Menu result = (Menu) query.uniqueResult();
         if(result==null) {
-            throw new RuntimeException("Cannot find Dish by id = " + id);
+            throw new RuntimeException("Cannot find Menu by id = " + id);
         }
         return result;
     }
 
     @Override
+    @Transactional
     public Menu findByName(String name) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select m from Menu m where m.name like :name");
+        Query query = session.createQuery("select m from Menu m where m.name = :name");
         query.setParameter("name", name);
         return (Menu) query.uniqueResult();
     }

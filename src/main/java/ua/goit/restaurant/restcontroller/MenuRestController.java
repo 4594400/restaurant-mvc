@@ -30,8 +30,11 @@ public class MenuRestController {
     }
 
     @RequestMapping(value = "/get-json-menuByName/{menuName}", method = RequestMethod.GET)
-    public Menu menuByName(@PathVariable String menuName) {
-        return menuService.findByName(menuName);
+    public Menu menuByName(@PathVariable("menuName") String menuName) {
+
+        Menu menu = menuService.findByName(menuName);
+        System.out.println(menu.toString());
+        return menu;
     }
 
     @RequestMapping(value = "/get-json-menuById/{id}", method = RequestMethod.GET)

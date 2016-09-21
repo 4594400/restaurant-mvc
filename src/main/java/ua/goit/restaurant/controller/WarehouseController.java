@@ -33,9 +33,6 @@ public class WarehouseController {
     @RequestMapping(value = "/warehouses/list", method = RequestMethod.GET)
     public String warehouseCtrl(Model model) {
         List<Warehouse> warehouses = warehouseService.findAll();
-        /*for (Warehouse warehouse : warehouses) {
-            System.out.println(warehouse.toString());
-        }*/
         model.addAttribute("warehouses", warehouses);
         return "/warehouses/list";
     }

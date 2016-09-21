@@ -55,7 +55,7 @@ public class InitDB {
 
         Employee billy = new Employee();
         billy.setName("Билли");
-        billy.setSurname("Гейтов");
+        billy.setSurname("Бонс");
         billy.setBirthday(Date.valueOf("1991-02-15"));
         billy.setPhoneNumber("333-33-33");
         billy.setPosition(Position.WAITER);
@@ -64,58 +64,210 @@ public class InitDB {
 
 
 
+        Ingredient potato = new Ingredient();
+        potato.setName("Potato");
+        ingredientDao.save(potato);
+
+        Ingredient onion = new Ingredient();
+        onion.setName("Onion");
+        ingredientDao.save(onion);
+
+        Ingredient meat = new Ingredient();
+        meat.setName("Meat");
+        ingredientDao.save(meat);
+
+        Ingredient chicken = new Ingredient();
+        chicken.setName("Chicken");
+        ingredientDao.save(chicken);
+
+        Ingredient carrot = new Ingredient();
+        carrot.setName("Carrot");
+        ingredientDao.save(carrot);
+
+        Ingredient mayonnaise = new Ingredient();
+        mayonnaise.setName("Mayonnaise");
+        ingredientDao.save(mayonnaise);
+
+        Ingredient salt = new Ingredient();
+        salt.setName("Salt");
+        ingredientDao.save(salt);
+
+        Ingredient pepper = new Ingredient();
+        pepper.setName("Pepper");
+        ingredientDao.save(pepper);
+
+        Ingredient olives = new Ingredient();
+        olives.setName("Olives");
+        ingredientDao.save(olives);
+
+        Ingredient cheese = new Ingredient();
+        cheese.setName("Cheese");
+        ingredientDao.save(cheese);
+
+        Ingredient eggs = new Ingredient();
+        eggs.setName("Eggs");
+        ingredientDao.save(eggs);
+
+        Ingredient bacon = new Ingredient();
+        bacon.setName("Bacon");
+        ingredientDao.save(bacon);
+
+        Ingredient salad = new Ingredient();
+        salad.setName("Salad");
+        ingredientDao.save(salad);
+
+        Ingredient anchovies = new Ingredient();
+        anchovies.setName("Anchovies");
+        ingredientDao.save(anchovies);
+
+        Ingredient bread = new Ingredient();
+        bread.setName("Bread");
+        ingredientDao.save(bread);
+
+        Ingredient crackers = new Ingredient();
+        crackers.setName("Crackers");
+        ingredientDao.save(crackers);
+
+        Ingredient tomato = new Ingredient();
+        tomato.setName("Tomato");
+        ingredientDao.save(tomato);
+
+        Ingredient fish = new Ingredient();
+        fish.setName("Fish");
+        ingredientDao.save(fish);
+
+
+        List<Ingredient> caesarIngredients = new ArrayList<>();
+        caesarIngredients.add(mayonnaise);
+        caesarIngredients.add(onion);
+        caesarIngredients.add(chicken);
+        caesarIngredients.add(salt);
+        caesarIngredients.add(salad);
+        caesarIngredients.add(anchovies);
+        caesarIngredients.add(crackers);
+
+        List<Ingredient> greekIngredients = new ArrayList<>();
+        greekIngredients.add(olives);
+        greekIngredients.add(onion);
+        greekIngredients.add(salt);
+        greekIngredients.add(salad);
+        greekIngredients.add(cheese);
+        greekIngredients.add(tomato);
+
+
+        List<Ingredient> mimosaIngredients = new ArrayList<>();
+        mimosaIngredients.add(eggs);
+        mimosaIngredients.add(salt);
+        mimosaIngredients.add(mayonnaise);
+        mimosaIngredients.add(onion);
+        mimosaIngredients.add(cheese);
+        mimosaIngredients.add(carrot);
+        mimosaIngredients.add(fish);
+
+        List<Ingredient> carbonaraIngredients = new ArrayList<>();
+        carbonaraIngredients.add(meat);
+        carbonaraIngredients.add(onion);
+        carbonaraIngredients.add(salt);
+        carbonaraIngredients.add(bacon);
+        carbonaraIngredients.add(cheese);
+        carbonaraIngredients.add(pepper);
+
+
+        List<Ingredient> lasagneIngredients = new ArrayList<>();
+        lasagneIngredients.add(bacon);
+        lasagneIngredients.add(potato);
+        lasagneIngredients.add(onion);
+        lasagneIngredients.add(salt);
+        lasagneIngredients.add(cheese);
+        lasagneIngredients.add(pepper);
+
+        List<Ingredient> acquacottaIngredients = new ArrayList<>();
+        acquacottaIngredients.add(carrot);
+        acquacottaIngredients.add(potato);
+        acquacottaIngredients.add(onion);
+        acquacottaIngredients.add(salt);
+        acquacottaIngredients.add(meat);
+        acquacottaIngredients.add(pepper);
+
+        List<Ingredient> goulashIngredients = new ArrayList<>();
+        goulashIngredients.add(tomato);
+        goulashIngredients.add(eggs);
+        goulashIngredients.add(potato);
+        goulashIngredients.add(onion);
+        goulashIngredients.add(salt);
+        goulashIngredients.add(carrot);
+        goulashIngredients.add(meat);
+        goulashIngredients.add(pepper);
+
+
+
+
 
 
 
         Dish caesar = new Dish();
-        caesar.setName("Caesar");
+        caesar.setName("Цезарь");
         caesar.setDishCategory(DishCategory.SALAD);
         caesar.setPrice(25.5);
         caesar.setWeight(350.0);
+        caesar.setDescription("Четыре главных ингредиента салата «Цезарь» — куриные грудки, сыр пармезан, сухарики из белого хлеба и анчоусы.");
+        caesar.setIngredients(caesarIngredients);
         dishDao.save(caesar);
 
         Dish greek = new Dish();
-        greek.setName("Greek");
+        greek.setName("Греческий");
         greek.setDishCategory(DishCategory.SALAD);
         greek.setPrice(10.5);
         greek.setWeight(150.0);
+        greek.setDescription("Главный ингредиент греческого салата — хориатики — фета, традиционный греческий же сыр из овечьего или козьего молока.");
+        greek.setIngredients(greekIngredients);
         dishDao.save(greek);
 
         Dish mimosa = new Dish();
-        mimosa.setName("Mimosa");
+        mimosa.setName("Мимоза");
         mimosa.setDishCategory(DishCategory.SALAD);
         mimosa.setPrice(15.0);
         mimosa.setWeight(150.0);
+        mimosa.setDescription("Главными ингредиентами служат консервы из рыбы, куриные яйца лук и заправка из майонеза.");
+        mimosa.setIngredients(mimosaIngredients);
         dishDao.save(mimosa);
 
 
 
         Dish carbonara = new Dish();
-        carbonara.setName("Pasta Carbonara");
+        carbonara.setName("Паста Карбонара");
         carbonara.setDishCategory(DishCategory.SIDE_DISH);
         carbonara.setPrice(50.0);
         carbonara.setWeight(200.0);
+        carbonara.setDescription("Спагетти с кусочками гуанчиале (сыровяленые свиные щёки), смешанные с соусом из яиц, сыра пармезан, соли и свежемолотого черного перца.");
+        carbonara.setIngredients(carbonaraIngredients);
         dishDao.save(carbonara);
 
         Dish lasagne = new Dish();
-        lasagne.setName("Pasta Lasagne");
+        lasagne.setName("Паста Лазанья");
         lasagne.setDishCategory(DishCategory.SIDE_DISH);
         lasagne.setPrice(60.0);
         lasagne.setWeight(200.0);
+        lasagne.setDescription("Блюдо итальянской кухни, традиционно приготовляемое из листов вперемешку со слоями начинки на основе рагу, залитых соусом бешамель и посыпанных сыром пармезан.");
+        lasagne.setIngredients(lasagneIngredients);
         dishDao.save(lasagne);
 
         Dish acquacotta = new Dish();
-        acquacotta.setName("Soup Acquacotta");
+        acquacotta.setName("Суп Аквакотта");
         acquacotta.setDishCategory(DishCategory.MAIN);
         acquacotta.setPrice(20.0);
         acquacotta.setWeight(250.0);
+        acquacotta.setDescription("Итальянский суп, который не имеет классического рецепта. Летом в нем много свежих трав, он более легкий и жидкий. Зимой – более густой и сытный за счет обилия овощей.");
+        acquacotta.setIngredients(acquacottaIngredients);
         dishDao.save(acquacotta);
 
         Dish goulash = new Dish();
-        goulash.setName("Goulash soup");
+        goulash.setName("Суп Гуляш");
         goulash.setDishCategory(DishCategory.MAIN);
         goulash.setPrice(30.0);
         goulash.setWeight(300.0);
+        goulash.setDescription("Венгерский гуляш – это… острый, густой суп. Настолько густой, что его можно даже отнести к рагу.");
+        goulash.setIngredients(goulashIngredients);
         dishDao.save(goulash);
 
 
@@ -160,56 +312,51 @@ public class InitDB {
         orderDao.save(order3);
 
         Menu menu1 = new Menu();
-        menu1.setName("Завтрак");
+        menu1.setName("Breakfast");
         menu1.setDishes(breakfast);
         menuDao.save(menu1);
+//****************************************************************************************************
+        System.out.println("-----------------------------");
+        System.out.println(menu1.getDishes().toString());
+        System.out.println("-----------------------------");
+
+        Menu menu = menuDao.load(1L);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println(menu.getDishes().toString());
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//****************************************************************************************************
+        System.out.println(menu.toString());
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
         Menu menu2 = new Menu();
-        menu2.setName("Обед");
+        menu2.setName("Dinner");
         menu2.setDishes(dinner);
         menuDao.save(menu2);
 
         Menu menu3 = new Menu();
-        menu3.setName("Ужин");
+        menu3.setName("Supper");
         menu3.setDishes(supper);
         menuDao.save(menu3);
 
 
-        Ingredient ingredient1 = new Ingredient();
-        ingredient1.setName("Potato");
-        ingredientDao.save(ingredient1);
 
-        Ingredient ingredient2 = new Ingredient();
-        ingredient2.setName("Onion");
-        ingredientDao.save(ingredient2);
-
-        Ingredient ingredient3 = new Ingredient();
-        ingredient3.setName("Meat");
-        ingredientDao.save(ingredient3);
-
-        Ingredient ingredient4 = new Ingredient();
-        ingredient4.setName("Chicken");
-        ingredientDao.save(ingredient4);
-
-        Ingredient ingredient5 = new Ingredient();
-        ingredient5.setName("Carrot");
-        ingredientDao.save(ingredient5);
 
         Warehouse warehouse1 = new Warehouse();
-        warehouse1.setIngredient(ingredient1);
+        warehouse1.setIngredient(potato);
         warehouse1.setQuantity(500.0);
         warehouse1.setMeasure(Measure.KILOGRAM);
         warehouseDao.save(warehouse1);
 
 
         Warehouse warehouse2 = new Warehouse();
-        warehouse2.setIngredient(ingredient2);
+        warehouse2.setIngredient(onion);
         warehouse2.setQuantity(100.0);
-        warehouse2.setMeasure(Measure.TON);
+        warehouse2.setMeasure(Measure.KILOGRAM);
         warehouseDao.save(warehouse2);
 
         Warehouse warehouse3 = new Warehouse();
-        warehouse3.setIngredient(ingredient3);
+        warehouse3.setIngredient(meat);
         warehouse3.setQuantity(50.0);
         warehouse3.setMeasure(Measure.KILOGRAM);
         warehouseDao.save(warehouse3);

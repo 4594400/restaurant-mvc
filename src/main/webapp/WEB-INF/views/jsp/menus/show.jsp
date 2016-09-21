@@ -1,51 +1,61 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
-<jsp:include page="../fragments/header.jsp"/>
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <body>
 
-<h1 style="text-align: center; color: #761c19">Menu: ${menu.name}</h1>
+<h1 style="text-align: center; color: #761c19">Меню: ${menu.name}</h1>
 
 <hr>
 
 <div style="width: 50%; margin-left: 20px">
 
-<h1 style="color: #985f0d"> List of dishes: </h1>
+<h1 style="color: #985f0d"> Список блюд: </h1>
 
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
-            <th>Name</th>
-            <th>Dish Category</th>
-            <th>Price</th>
-            <th>Weight</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Цена, грн.</th>
+            <th>Вес, гр.</th>
+            <th></th>
 
         </tr>
         </thead>
 
-        <c:forEach items="${menu.dishes}" var="dishes">
+        <c:forEach items="${menu.dishes}" var="dish">
             <tr>
-                <td>${dishes.name}</td>
-                <td>${dishes.dishCategory}</td>
-                <td>${dishes.price}</td>
-                <td>${dishes.weight}</td>
+                <td>${dish.name}</td>
+                <td>${dish.dishCategory}</td>
+                <td>${dish.price}</td>
+                <td>${dish.weight}</td>
+                <td style="align-items: center; width: 20px">
+                    <spring:url value="/menus/${menu.id}/deleteDish/${dish.id}" var="deleteDishFromMenuUrl"/>
+                    <a href="${deleteDishFromMenuUrl}">
+                        <img src="<c:url value="/resources/images/garbage24.jpg"/>"/>
+                    </a>
+                </td>
             </tr>
         </c:forEach>
 
     </table>
 </div>
 <hr>
+<br>
+<br>
+<br>
 
-<spring:url value="/menus/${menu.name}/addDish" var="menuActionUrl"/>
+<spring:url value="/menus/${menu.id}/addDish" var="menuActionUrl"/>
 
 <form:form action="${menuActionUrl}" modelAttribute="dish" method="post">
 
     <spring:bind path="dish">
-        <label class="col-sm-2 control-label"><h4>Select a dish to add to the menu:</h4></label>
+        <label class="col-sm-2 control-label"><h4>Выберите блюдо для добавления в меню:</h4></label>
         <div class="col-sm-2">
 
             <form:select path="name" class="form-control" multiple="false">
@@ -55,7 +65,7 @@
         </div>
     </spring:bind>
 
-    <button type="submit" class="btn-lg btn-primary ">Add dish</button>
+    <button type="submit" class="btn-lg btn-primary ">Добавить</button>
 </form:form>
 
 
@@ -73,7 +83,7 @@
 </form>--%>
 
 
-<jsp:include page="../fragments/footer.jsp"/>
+<%--<jsp:include page="../fragments/footer.jsp"/>--%>
 </body>
 </html>
 

@@ -43,7 +43,11 @@ public class DishController {
     @RequestMapping(value = "/dishes/show/{dishName}", method = RequestMethod.GET)
     public ModelAndView showDish(@PathVariable String dishName) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(dishService.findByName(dishName));
+        Dish dish = dishService.findByName(dishName);
+        modelAndView.addObject(dish);
+
+        modelAndView.addObject("ingredients", dish.getIngredients());
+
         modelAndView.setViewName("/dishes/show");
         return modelAndView;
     }
@@ -60,9 +64,7 @@ public class DishController {
     public String showAddDishForm(Model model) {
 
         model.addAttribute("listOfDishCategory", DishCategory.values());
-        // set default value
         Dish dish = new Dish();
-        dish.setName("abra");
         model.addAttribute("dishForm", dish);
         return "/dishes/dishform";
     }
@@ -79,7 +81,4 @@ public class DishController {
 
 
 
-    public void setDishService(DishService dishService) {
-        this.dishService = dishService;
-    }
 }

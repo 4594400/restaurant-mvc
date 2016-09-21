@@ -49,15 +49,14 @@
                     </tr>
                     </thead>
 
-                    <c:forEach items="${dishes}" var="dish">
                         <tr>
-                            <td><a href="/dishes/show/${dish.name}">${dish.name}</a></td>
-                            <td>${dish.price}</td>
-                            <td>${dish.weight}</td>
-                            <td>${dish.description}</td>
+                            <td><a href="/dishes/show/${dishes.name}">${dishes.name}</a></td>
+                            <td>${dishes.price}</td>
+                            <td>${dishes.weight}</td>
+                            <td>${dishes.description}</td>
                         </tr>
 
-                    </c:forEach>
+
                 </table>
             </td>
 

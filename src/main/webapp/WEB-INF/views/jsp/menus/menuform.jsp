@@ -3,20 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <div class="container">
 
     <c:choose>
         <c:when test="${menuForm['new']}">
-            <h1>Add Menu</h1>
+            <h1>Добавить меню</h1>
         </c:when>
         <c:otherwise>
-            <h1>Update Menu</h1>
+            <h1>Редактировать меню</h1>
         </c:otherwise>
     </c:choose>
     <br />
@@ -30,9 +31,9 @@
 
         <spring:bind path="name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Name</label>
+                <label class="col-sm-2 control-label">Название</label>
                 <div class="col-sm-10">
-                    <form:input path="name" type="text" class="form-control " id="name" placeholder="Name" />
+                    <form:input path="name" type="text" class="form-control " id="name" placeholder="Name" required="required"/>
                     <form:errors path="name" class="control-label" />
                 </div>
             </div>
@@ -58,11 +59,11 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${menuForm['new']}">
-                        <button type="submit" class="btn-lg btn-primary pull-right">Add
+                        <button type="submit" class="btn-lg btn-primary pull-right">Добавить
                         </button>
                     </c:when>
                     <c:otherwise>
-                        <button type="submit" class="btn-lg btn-primary pull-right">Update
+                        <button type="submit" class="btn-lg btn-primary pull-right">Сохранить
                         </button>
                     </c:otherwise>
                 </c:choose>

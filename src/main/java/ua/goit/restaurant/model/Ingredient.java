@@ -1,7 +1,10 @@
 package ua.goit.restaurant.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -14,8 +17,14 @@ public class Ingredient {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "ingredient")
     private Warehouse warehouse;
+
+    //Only for mapping
+    @JsonIgnore
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Dish> dishes;
 
     public Ingredient() {
     }
@@ -45,6 +54,22 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     @Override

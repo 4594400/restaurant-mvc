@@ -3,23 +3,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <body>
 
 <div style="width: 50%; margin-left: 20px">
 
-    <h1 style="text-align: center; color: #23527c">List of ingredients</h1>
+    <h1 style="text-align: center; color: #23527c">Список ингредиентов</h1>
 
     <spring:url value="/ingredients/add" var="addUrl" />
-    <button class="btn btn-primary" onclick="location.href='${addUrl}'">Add Ingredient</button>
+    <button class="btn btn-primary" onclick="location.href='${addUrl}'">Добавить ингредиент</button>
     <br>
     <br>
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
-            <th>Name</th>
+            <th>Название</th>
             <th></th>
             <th></th>
         </tr>
@@ -47,6 +47,9 @@
 
     </table>
 </div>
+<br/>
+<br/>
+<br/>
 <br/>
 
 <jsp:include page="../fragments/footer.jsp" />

@@ -2,8 +2,8 @@ package ua.goit.restaurant.model;
 
 
 public enum Measure {
-    GRAM,
     KILOGRAM,
+    GRAM,
     CENTNER,
     TON,
     LITER,

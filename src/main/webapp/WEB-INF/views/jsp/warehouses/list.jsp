@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
-<jsp:include page="../fragments/header.jsp"/>
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <body>
 
@@ -17,7 +17,8 @@
 
     <hr>
 
-    <h2 style="text-align: center; color: #23527c">Список ингридиентов на складе</h2>
+    <h2 style="text-align: center; color: #23527c">Список ингредиентов на складе</h2>
+    <br>
 
     <spring:url value="/warehouses/search" var="warehouseActionUrl"/>
     <form:form class="form-horizontal" method="get" action="${warehouseActionUrl}">
@@ -34,12 +35,12 @@
     </form:form>
 
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
-            <th>Ingredient</th>
-            <th>Quantity</th>
-            <th>Measure</th>
+            <th>Ингредиент</th>
+            <th>Количество</th>
+            <th>Ед. измерения</th>
             <th></th>
             <th></th>
         </tr>

@@ -5,7 +5,7 @@
 <jsp:include page="../fragments/header.jsp"/>
 <body>
 
-<div style="margin-left: 20px">
+<div style="margin-left: 100px">
     <table style="width: 100%">
         <tr style="vertical-align:top">
             <td>

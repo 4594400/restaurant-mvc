@@ -15,7 +15,7 @@ public class Warehouse implements Serializable{
 
     //@Id
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "ingredientId")
+    @JoinColumn(name = "ingredientId", unique = true)
     private Ingredient ingredient;
 
     @Column(name = "quantity")

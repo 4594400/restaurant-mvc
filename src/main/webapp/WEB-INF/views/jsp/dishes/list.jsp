@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <body>
 
@@ -11,20 +11,20 @@
 
 <div style="width: 50%; margin-left: 20px">
 
-    <h1 style="text-align: center; color: #23527c">Dishes of our restaurant</h1>
+    <h1 style="text-align: center; color: #23527c">Блюда нашего ресторана</h1>
 
     <spring:url value="/dishes/add" var="addUrl" />
-    <button class="btn btn-primary" onclick="location.href='${addUrl}'">Add Dish</button>
+    <button class="btn btn-primary" onclick="location.href='${addUrl}'">Добавить блюдо</button>
     <br>
     <br>
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
-            <th>Name</th>
-            <th>Dish Category</th>
-            <th>Price</th>
-            <th>Weight</th>
+            <th>Название блюда</th>
+            <th>Цена, грн.</th>
+            <th>Вес, гр.</th>
+            <th>Категория</th>
             <th></th>
             <th></th>
         </tr>
@@ -33,9 +33,9 @@
         <c:forEach items="${dishes}" var="dish">
             <tr>
                 <td><a href="/dishes/show/${dish.name}">${dish.name}</a></td>
-                <td>${dish.dishCategory}</td>
                 <td>${dish.price}</td>
                 <td>${dish.weight}</td>
+                <td>${dish.dishCategory}</td>
 
                 <td style="align-items: center; width: 20px">
                     <spring:url value="/dishes/${dish.id}/delete" var="deleteUrl"/>

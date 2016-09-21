@@ -28,6 +28,19 @@ public class Dish {
     @Column(name = "weight")
     private Double weight;
 
+    @Column (name = "description")
+    private String description;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "dishes_to_ingredients",
+            joinColumns = {@JoinColumn (name = "dishId")},
+            inverseJoinColumns = {@JoinColumn (name = "ingredientsId")}
+    )
+    private List<Ingredient> ingredients;
+
+
+
     //Only for mapping
     @JsonIgnore
     @ManyToMany(mappedBy = "dishes", cascade = CascadeType.ALL)
@@ -43,11 +56,12 @@ public class Dish {
     public Dish() {
     }
 
-    public Dish(String name, DishCategory dishCategory, Double price, Double weight) {
+    public Dish(String name, DishCategory dishCategory, Double price, Double weight, String description) {
         this.name = name;
         this.dishCategory = dishCategory;
         this.price = price;
         this.weight = weight;
+        this.description = description;
     }
 
     ///////////////////////////////
@@ -96,6 +110,14 @@ public class Dish {
         this.weight = weight;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<Order> getOrder() {
         return order;
     }
@@ -112,6 +134,14 @@ public class Dish {
         this.menus = menus;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,7 +152,9 @@ public class Dish {
         if (name != null ? !name.equals(dish.name) : dish.name != null) return false;
         if (dishCategory != dish.dishCategory) return false;
         if (price != null ? !price.equals(dish.price) : dish.price != null) return false;
-        return weight != null ? weight.equals(dish.weight) : dish.weight == null;
+        if (weight != null ? !weight.equals(dish.weight) : dish.weight != null) return false;
+        if (description != null ? !description.equals(dish.description) : dish.description != null) return false;
+        return ingredients != null ? ingredients.equals(dish.ingredients) : dish.ingredients == null;
 
     }
 
@@ -132,6 +164,8 @@ public class Dish {
         result = 31 * result + (dishCategory != null ? dishCategory.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (weight != null ? weight.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (ingredients != null ? ingredients.hashCode() : 0);
         return result;
     }
 
@@ -143,6 +177,7 @@ public class Dish {
                 ", dishCategory=" + dishCategory +
                 ", price=" + price +
                 ", weight=" + weight +
+                ", description=" + description +
                 '}';
     }
 }

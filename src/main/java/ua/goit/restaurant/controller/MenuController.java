@@ -15,10 +15,7 @@ import ua.goit.restaurant.model.Menu;
 import ua.goit.restaurant.service.interfaces.DishService;
 import ua.goit.restaurant.service.interfaces.MenuService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Controller
@@ -47,12 +44,14 @@ public class MenuController {
         return "redirect:/menus/list";
     }
 
-    @RequestMapping(value = "/menus/show/{menuName}", method = RequestMethod.GET)
-    public ModelAndView showMenu(@PathVariable String menuName) {
+    @RequestMapping(value = "/menus/show/{id}", method = RequestMethod.GET)
+    public ModelAndView showMenu(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
 
-        Menu menu = menuService.findByName(menuName);
+        Menu menu = menuService.load(id);
         modelAndView.addObject("menu", menu);
+        System.out.println("*************************");
+        System.out.println(menu.toString());
 
         List<Dish> dishList = menu.getDishes();
         modelAndView.addObject("dishList", dishList);
@@ -70,17 +69,32 @@ public class MenuController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/menus/{menuName}/addDish", method = RequestMethod.POST)
-    public String addDishToMenu(@PathVariable("menuName") String menuName, @ModelAttribute("dish") Dish dish) {
+    @RequestMapping(value = "/menus/{id}/addDish", method = RequestMethod.POST)
+    public String addDishToMenu(@PathVariable("id") Long id, @ModelAttribute("dish") Dish dish) {
         String dishName = dish.getName();
         Dish actualDish = dishService.findByName(dishName);
-        Menu menu = menuService.findByName(menuName);
+        Menu menu = menuService.load(id);
         menu.getDishes().add(actualDish);
         menuService.save(menu);
 
         System.out.println(menu.toString());
 
-        return "redirect:/menus/show/" + menuName;
+        return "redirect:/menus/show/" + menu.getId();
+    }
+
+    @RequestMapping(value = "/menus/{menuId}/deleteDish/{dishId}", method = RequestMethod.GET)
+    public String deleteDishFromOrder(@PathVariable("menuId") Long menuId, @PathVariable("dishId") Long dishId) {
+        Menu menu = menuService.load(menuId);
+        List<Dish> dishes = menu.getDishes();
+        Iterator<Dish> iterator = dishes.iterator();
+        while (iterator.hasNext()) {
+            Dish dish = iterator.next();
+            if(dish.getId()==dishId) {
+                iterator.remove();
+            }
+        }
+        menuService.save(menu);
+        return "redirect:/menus/show/" + menu.getId();
     }
 
 
@@ -99,7 +113,6 @@ public class MenuController {
     @RequestMapping(value = "/menus/add", method = RequestMethod.GET)
     public String showAddEmployeeForm(Model model) {
         Menu menu = new Menu();
-        menu.setName("new menu");
         model.addAttribute("menuForm", menu);
         return "/menus/menuform";
     }

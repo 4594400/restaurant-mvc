@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="fragments/header.jsp"/>
+<jsp:include page="../jsp/fragments/adminheader.jsp" />
 
 <body>
 
@@ -13,8 +13,8 @@
     <h1 style="text-align: center; color: #23527c">REST API</h1>
 
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
             <th style="text-align: center">Task</th>
             <th style="text-align: center">Get JSON</th>
@@ -54,7 +54,7 @@
                 <span style="font-weight: bold">enter URL: </span>
                 http://localhost:8080/get-json-employeeBySurname/{surname}
                 <br>
-                <span style="font-weight: bold">example: </span> http://localhost:8080/get-json-employeeBySurname/Гейтов
+                <span style="font-weight: bold">example: </span> http://localhost:8080/get-json-employeeBySurname/Бонс
             </td>
         </tr>
 
@@ -117,7 +117,7 @@
             <td>
                 <span style="font-weight: bold">enter URL: </span> http://localhost:8080/get-json-menuByName/{name}
                 <br>
-                <span style="font-weight: bold">example: </span> http://localhost:8080/get-json-menuByName/Завтрак
+                <span style="font-weight: bold">example: </span> http://localhost:8080/get-json-menuByName/Dinner
             </td>
         </tr>
 

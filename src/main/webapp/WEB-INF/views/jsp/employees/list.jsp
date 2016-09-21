@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <body>
 
@@ -12,12 +12,12 @@
 <h1 style="text-align: center; color: #23527c">Сотрудники нашего ресторана</h1>
 
 <spring:url value="/employees/add" var="addUrl" />
-<button class="btn btn-primary" onclick="location.href='${addUrl}'">Add Employee</button>
+<button class="btn btn-primary" onclick="location.href='${addUrl}'">Добавить сотрудника</button>
 <br>
 <br>
 
-    <table border="1" style="align-items: center" class="table table-striped">
-        <thead>
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <thead style = "color:white;background-color:dimgrey">
         <tr>
             <th>Имя</th>
             <th>Фамилия</th>

@@ -3,20 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="../fragments/header.jsp" />
+<jsp:include page="../fragments/adminheader.jsp" />
 
 <div class="container">
 
     <c:choose>
         <c:when test="${ingredientForm['new']}">
-            <h1>Add Ingredient</h1>
+            <h1>Добавить ингредиент</h1>
         </c:when>
         <c:otherwise>
-            <h1>Update Ingredient</h1>
+            <h1>Редактировать ингредиент</h1>
         </c:otherwise>
     </c:choose>
     <br />
@@ -30,7 +31,7 @@
 
         <spring:bind path="name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Name</label>
+                <label class="col-sm-2 control-label">Название</label>
                 <div class="col-sm-10">
                     <form:input path="name" type="text" class="form-control " id="name" placeholder="Name" />
                     <form:errors path="name" class="control-label" />
@@ -43,11 +44,11 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${ingredientForm['new']}">
-                        <button type="submit" class="btn-lg btn-primary pull-right">Add
+                        <button type="submit" class="btn-lg btn-primary pull-right">Добавить
                         </button>
                     </c:when>
                     <c:otherwise>
-                        <button type="submit" class="btn-lg btn-primary pull-right">Update
+                        <button type="submit" class="btn-lg btn-primary pull-right">Сохранить
                         </button>
                     </c:otherwise>
                 </c:choose>
