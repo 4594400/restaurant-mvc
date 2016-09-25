@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RestController {
-    @RequestMapping("/rest")
+    @RequestMapping("/admin/rest/rest")
     public String index() {
-        return "rest";
+        return "/admin/rest/rest";
     }
 }

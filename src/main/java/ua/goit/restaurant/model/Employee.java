@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Blob;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -41,22 +43,34 @@ public class Employee implements Serializable{
     @Column(name = "salary")
     private Double salary;
 
+    @Column(name = "info", columnDefinition = "text")
+    private String info;
+
+    @Column(name="content")
+    @JsonIgnore
+    @Type(type="org.hibernate.type.BinaryType")
+    private byte[] content;
+
+
+
 //Only for mapping
     @JsonIgnore
-    @OneToMany(mappedBy = "waiter", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "waiter"/*, cascade = CascadeType.ALL*/)
     private List<Order> orders;
 
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, Date birthday, String phoneNumber, Position position, Double salary) {
+    public Employee(String name, String surname, Date birthday, String phoneNumber, Position position, Double salary, String info, byte[] content) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
         this.position = position;
         this.salary = salary;
+        this.info = info;
+        this.content = content;
     }
 
     ///////////////////////////////////
@@ -121,6 +135,22 @@ public class Employee implements Serializable{
         this.salary = salary;
     }
 
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
@@ -169,6 +199,8 @@ public class Employee implements Serializable{
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", position=" + position +
                 ", salary=" + salary +
+                ", info='" + info + '\'' +
+                ", content=" + Arrays.toString(content) +
                 '}';
     }
 }

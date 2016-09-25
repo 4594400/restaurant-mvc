@@ -27,17 +27,17 @@ public class PreparedDishController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/prepared/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/prepared/list", method = RequestMethod.GET)
     public String preparedDishCtrl(ModelMap modelMap) {
         List<PreparedDish> preparedDishes = preparedDishService.findAll();
         modelMap.addAttribute("preparedDishes", preparedDishes);
-        return "/prepared/list";
+        return "/admin/prepared/list";
     }
 
-    @RequestMapping(value = "/prepared/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/prepared/list", method = RequestMethod.POST)
     public String saveOrUpdatePreparedDish(@ModelAttribute("preparedDishForm") @Validated PreparedDish preparedDish, BindingResult result){
         if(result.hasErrors()) {
-            return "/prepared/prepareddishform";
+            return "/admin/prepared/prepareddishform";
         }
         String dishName = preparedDish.getDish().getName();
         Dish dish = dishService.findByName(dishName);
@@ -48,32 +48,32 @@ public class PreparedDishController {
         preparedDish.setCooker(cooker);
 
         preparedDishService.save(preparedDish);
-        return "redirect:/prepared/list";
+        return "redirect:/admin/prepared/list";
 
     }
 
 
-    @RequestMapping(value = "/prepared/{id}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/prepared/{id}/delete", method = RequestMethod.GET)
     public String deletePreparedDish(@PathVariable("id") Long id) {
         PreparedDish preparedDish = preparedDishService.load(id);
         preparedDishService.remove(preparedDish);
-        return "redirect:/prepared/list";
+        return "redirect:/admin/prepared/list";
     }
 
-    @RequestMapping(value = "/prepared/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/prepared/add", method = RequestMethod.GET)
     public String addPreparedDish(ModelMap modelMap) {
         PreparedDish preparedDish = new PreparedDish();
         modelMap.addAttribute("preparedDishForm", preparedDish);
         modelMap.addAttribute("listOfDishCategory", DishCategory.values());
-        return "/prepared/prepareddishform";
+        return "/admin/prepared/prepareddishform";
 
     }
 
-    @RequestMapping(value = "/prepared/{id}/update", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/prepared/{id}/update", method = RequestMethod.GET)
     public String updatePreparedDish(@PathVariable("id") Long id, ModelMap modelMap) {
         PreparedDish preparedDish = preparedDishService.load(id);
         modelMap.addAttribute("preparedDishForm", preparedDish);
-        return "/prepared/prepareddishform";
+        return "/admin/prepared/prepareddishform";
     }
 
 

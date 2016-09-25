@@ -42,6 +42,7 @@ public class InitDB {
         alfred.setPhoneNumber("111-11-11");
         alfred.setPosition(Position.MANAGER);
         alfred.setSalary(1050.0);
+        alfred.setInfo("Карьеру успешного ресторатора прошел ступень за ступенью, начав с официанта в отеле Метрополь в 1991 году, далее работал барменом, метрдотелем, менеджером бара, заместителем директора, генеральным директором сети ресторанов холдинга Centraarchy");
         employeeDao.save(alfred);
 
         Employee jenny = new Employee();
@@ -51,6 +52,7 @@ public class InitDB {
         jenny.setPhoneNumber("222-22-22");
         jenny.setPosition(Position.ADMINISTRATOR);
         jenny.setSalary(1250.0);
+        jenny.setInfo("С сентября 2011 по январь 2014 года работала официантом в ресторане FermA. С января 2014 года по настоящее время является администратором ресторана Centraarchy. В 2014 году с отличием окончила школу сомелье «Миллезим». Свободно владеет итальянским и английским языками.");
         employeeDao.save(jenny);
 
         Employee billy = new Employee();
@@ -60,80 +62,81 @@ public class InitDB {
         billy.setPhoneNumber("333-33-33");
         billy.setPosition(Position.WAITER);
         billy.setSalary(1450.0);
+        billy.setInfo("Билли является одним из рекордсменов по размеру средств, переданных на благотворительностью. В период с 1996 по 2007 год, в 2009 и в 2015 годах — самый богатый человек планеты по версии журнала Forbes. В свободное время подрабатывает в ресторане Centraarchy.");
         employeeDao.save(billy);
 
 
 
         Ingredient potato = new Ingredient();
-        potato.setName("Potato");
+        potato.setName("Картошка");
         ingredientDao.save(potato);
 
         Ingredient onion = new Ingredient();
-        onion.setName("Onion");
+        onion.setName("Лук");
         ingredientDao.save(onion);
 
         Ingredient meat = new Ingredient();
-        meat.setName("Meat");
+        meat.setName("Мясо");
         ingredientDao.save(meat);
 
         Ingredient chicken = new Ingredient();
-        chicken.setName("Chicken");
+        chicken.setName("Курица");
         ingredientDao.save(chicken);
 
         Ingredient carrot = new Ingredient();
-        carrot.setName("Carrot");
+        carrot.setName("Морковь");
         ingredientDao.save(carrot);
 
         Ingredient mayonnaise = new Ingredient();
-        mayonnaise.setName("Mayonnaise");
+        mayonnaise.setName("Майонез");
         ingredientDao.save(mayonnaise);
 
         Ingredient salt = new Ingredient();
-        salt.setName("Salt");
+        salt.setName("Соль");
         ingredientDao.save(salt);
 
         Ingredient pepper = new Ingredient();
-        pepper.setName("Pepper");
+        pepper.setName("Перец");
         ingredientDao.save(pepper);
 
         Ingredient olives = new Ingredient();
-        olives.setName("Olives");
+        olives.setName("Оливки");
         ingredientDao.save(olives);
 
         Ingredient cheese = new Ingredient();
-        cheese.setName("Cheese");
+        cheese.setName("Сыр");
         ingredientDao.save(cheese);
 
         Ingredient eggs = new Ingredient();
-        eggs.setName("Eggs");
+        eggs.setName("Яйцо");
         ingredientDao.save(eggs);
 
         Ingredient bacon = new Ingredient();
-        bacon.setName("Bacon");
+        bacon.setName("Бекон");
         ingredientDao.save(bacon);
 
         Ingredient salad = new Ingredient();
-        salad.setName("Salad");
+        salad.setName("Салат");
         ingredientDao.save(salad);
 
         Ingredient anchovies = new Ingredient();
-        anchovies.setName("Anchovies");
+        anchovies.setName("Анчоусы");
         ingredientDao.save(anchovies);
 
         Ingredient bread = new Ingredient();
-        bread.setName("Bread");
+        bread.setName("Хлеб");
         ingredientDao.save(bread);
 
         Ingredient crackers = new Ingredient();
-        crackers.setName("Crackers");
+        crackers.setName("Сухари");
         ingredientDao.save(crackers);
 
         Ingredient tomato = new Ingredient();
-        tomato.setName("Tomato");
+        tomato.setName("Помидор");
         ingredientDao.save(tomato);
 
         Ingredient fish = new Ingredient();
-        fish.setName("Fish");
+        fish.setName("Рыба");
         ingredientDao.save(fish);
 
 
@@ -315,18 +318,6 @@ public class InitDB {
         menu1.setName("Breakfast");
         menu1.setDishes(breakfast);
         menuDao.save(menu1);
-//****************************************************************************************************
-        System.out.println("-----------------------------");
-        System.out.println(menu1.getDishes().toString());
-        System.out.println("-----------------------------");
-
-        Menu menu = menuDao.load(1L);
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println(menu.getDishes().toString());
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-//****************************************************************************************************
-        System.out.println(menu.toString());
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
         Menu menu2 = new Menu();
@@ -361,6 +352,12 @@ public class InitDB {
         warehouse3.setMeasure(Measure.KILOGRAM);
         warehouseDao.save(warehouse3);
 
+        Warehouse warehouse4 = new Warehouse();
+        warehouse4.setIngredient(olives);
+        warehouse4.setQuantity(10.5);
+        warehouse4.setMeasure(Measure.KILOGRAM);
+        warehouseDao.save(warehouse4);
+
 
         Cook gena = new Cook();
         gena.setName("Геннадий");
@@ -369,7 +366,8 @@ public class InitDB {
         gena.setPhoneNumber("888-88-88");
         gena.setPosition(Position.COOK);
         gena.setSalary(2300.0);
-        //piter.setPreparedDishes();
+        gena.setInfo("Геннадий - это шеф-повар нового многообещающего ресторана в центре Киева. Он известен широкой публике как автор и ведущий ярких и запоминающихся кулинарных программ, таких как – «Точка кипения», «Адская кухня», «Мастер-шеф». Наш повар любит свою работу и работает для тебя.");
+
         employeeDao.save(gena);
 
 
@@ -405,16 +403,4 @@ public class InitDB {
 
 
 
-
-    public void setDishDao(DishDao dishDao) {
-        this.dishDao = dishDao;
-    }
-
-    public void setEmployeeDao(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
-    }
-
-    public void setOrderDao(OrderDao orderDao) {
-        this.orderDao = orderDao;
-    }
 }

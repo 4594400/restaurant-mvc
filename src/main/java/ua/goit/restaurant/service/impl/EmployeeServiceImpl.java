@@ -22,8 +22,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public void remove(Employee employee) {
+        try{
         employeeDao.remove(employee);
-
+        } catch (Exception ex) {
+            throw new RuntimeException("Can't delete employee. The employee is present in the orders table! Before deleting please delete the employee from orders table!");
+        }
     }
 
     @Override

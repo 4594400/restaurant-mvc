@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="../jsp/fragments/adminheader.jsp" />
+<jsp:include page="admin/fragments/adminheader.jsp" />
 
 <body>
 

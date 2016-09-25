@@ -50,7 +50,7 @@
                     </thead>
 
                         <tr>
-                            <td><a href="/dishes/show/${dishes.name}">${dishes.name}</a></td>
+                            <td><a href="/showdish/${dishes.name}">${dishes.name}</a></td>
                             <td>${dishes.price}</td>
                             <td>${dishes.weight}</td>
                             <td>${dishes.description}</td>

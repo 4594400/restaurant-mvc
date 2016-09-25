@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import ua.goit.restaurant.model.Dish;
 import ua.goit.restaurant.model.Menu;
 import ua.goit.restaurant.service.interfaces.DishService;
@@ -36,6 +38,18 @@ public class MainController {
             modelMap.addAttribute("dishes", dish);
             return "/search";
         }
+    }
+
+    @RequestMapping(value = "/showdish/{dishName}", method = RequestMethod.GET)
+    public ModelAndView showDish(@PathVariable String dishName) {
+        ModelAndView modelAndView = new ModelAndView();
+        Dish dish = dishService.findByName(dishName);
+        modelAndView.addObject(dish);
+
+        modelAndView.addObject("ingredients", dish.getIngredients());
+
+        modelAndView.setViewName("/showdish");
+        return modelAndView;
     }
 
 }

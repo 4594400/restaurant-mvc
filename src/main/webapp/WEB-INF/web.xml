@@ -10,6 +10,7 @@
         <param-value>
             /WEB-INF/applicationContext.xml
             /WEB-INF/hibernate-context.xml
+            /WEB-INF/application-security.xml
         </param-value>
     </context-param>
     <listener>
@@ -61,6 +62,19 @@
     <error-page>
         <location>/WEB-INF/views/jsp/error.jsp</location>
     </error-page>
+
+
+<!--**************************** SPRING SECURITY FILTER *******************************-->
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 
 
 </web-app>

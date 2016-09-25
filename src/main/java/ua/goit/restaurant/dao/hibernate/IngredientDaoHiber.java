@@ -23,8 +23,7 @@ public class IngredientDaoHiber implements IngredientDao {
     @Override
     @Transactional
     public void remove(Ingredient ingredient) {
-        sessionFactory.getCurrentSession().delete(ingredient);
-
+            sessionFactory.getCurrentSession().delete(ingredient);
     }
 
     @Override

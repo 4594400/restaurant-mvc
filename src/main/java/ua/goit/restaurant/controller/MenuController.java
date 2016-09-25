@@ -3,6 +3,8 @@ package ua.goit.restaurant.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -28,23 +30,23 @@ public class MenuController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MenuController.class);
 
-    @RequestMapping(value = "/menus/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus/list", method = RequestMethod.GET)
     public String menusCtrl(Model model) {
         model.addAttribute("menus", menuService.findAll());
-        return "/menus/list";
+        return "admin/menus/list";
     }
 
-    @RequestMapping(value = "menus/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/menus/list", method = RequestMethod.POST)
     public String saveOrUpdateMenu(@ModelAttribute("menuForm") @Validated Menu menu, BindingResult result){
         if(result.hasErrors()) {
-            return "/menus/menuform";
+            return "admin/menus/menuform";
         }
         menuService.save(menu);
 
-        return "redirect:/menus/list";
+        return "redirect:/admin/menus/list";
     }
 
-    @RequestMapping(value = "/menus/show/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus/show/{id}", method = RequestMethod.GET)
     public ModelAndView showMenu(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
 
@@ -65,11 +67,11 @@ public class MenuController {
         }
         modelAndView.addObject("dishNameList", dishNameList);
 
-        modelAndView.setViewName("/menus/show");
+        modelAndView.setViewName("/admin/menus/show");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/menus/{id}/addDish", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/menus/{id}/addDish", method = RequestMethod.POST)
     public String addDishToMenu(@PathVariable("id") Long id, @ModelAttribute("dish") Dish dish) {
         String dishName = dish.getName();
         Dish actualDish = dishService.findByName(dishName);
@@ -79,10 +81,10 @@ public class MenuController {
 
         System.out.println(menu.toString());
 
-        return "redirect:/menus/show/" + menu.getId();
+        return "redirect:/admin/menus/show/" + menu.getId();
     }
 
-    @RequestMapping(value = "/menus/{menuId}/deleteDish/{dishId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus/{menuId}/deleteDish/{dishId}", method = RequestMethod.GET)
     public String deleteDishFromOrder(@PathVariable("menuId") Long menuId, @PathVariable("dishId") Long dishId) {
         Menu menu = menuService.load(menuId);
         List<Dish> dishes = menu.getDishes();
@@ -94,36 +96,36 @@ public class MenuController {
             }
         }
         menuService.save(menu);
-        return "redirect:/menus/show/" + menu.getId();
+        return "redirect:/admin/menus/show/" + menu.getId();
     }
 
 
 
 
-
-
-
-
-    @RequestMapping(value = "/menus/{id}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus/{id}/delete", method = RequestMethod.GET)
     public String deleteMenu(@PathVariable("id") Long id){
         menuService.remove(menuService.load(id));
-        return "redirect:/menus/list";
+        return "redirect:/admin/menus/list";
     }
 
-    @RequestMapping(value = "/menus/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus/add", method = RequestMethod.GET)
     public String showAddEmployeeForm(Model model) {
         Menu menu = new Menu();
         model.addAttribute("menuForm", menu);
-        return "/menus/menuform";
+        return "/admin/menus/menuform";
     }
 
-    @RequestMapping(value = "/menus/{id}/update", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus/{id}/update", method = RequestMethod.GET)
     public String updateMenu(@PathVariable Long id, Model model) {
         LOGGER.debug("showUpdateMenuForm() : {}", id);
         Menu menu = menuService.load(id);
         model.addAttribute("menuForm", menu);
-        return "/menus/menuform";
+        return "/admin/menus/menuform";
     }
+
+
+
+
 
 
 

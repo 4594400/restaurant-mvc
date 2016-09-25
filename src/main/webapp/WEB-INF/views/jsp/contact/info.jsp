@@ -6,6 +6,11 @@
 <jsp:include page="../fragments/header.jsp"/>
 <body>
 
+<div style="text-align: center">
+    <img src="<c:url value="/resources/images/welcome.jpg"/>">
+    <hr/>
+</div>
+
 <div style="margin-left: 20px">
     <table style="width: 80%">
         <tr style="vertical-align:top">
