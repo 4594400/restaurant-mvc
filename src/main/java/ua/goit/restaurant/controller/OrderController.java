@@ -107,11 +107,13 @@ public class OrderController {
     public String deleteDishFromOrder(@PathVariable("orderId") Long orderId, @PathVariable("dishId") Long dishId) {
         Order order = orderService.load(orderId);
         List<Dish> dishes = order.getDishes();
+
         Iterator<Dish> iterator = dishes.iterator();
         while (iterator.hasNext()) {
             Dish dish = iterator.next();
             if(dish.getId()==dishId) {
                 iterator.remove();
+                break;
             }
         }
         orderService.save(order);
