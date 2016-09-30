@@ -3,14 +3,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <head>
-    <title>Spring MVC Form Handling Example</title>
+    <title>Restaurant</title>
 
     <spring:url value="/resources/css/bootstrap.css" var="bootstrapCss"/>
     <link href="${bootstrapCss}" rel="stylesheet"/>
 
     <spring:url value="/resources/css/search.css" var="search"/>
     <link href="${search}" rel="stylesheet"/>
-    <%--    <link type="text/css" href="/resources/css/navbar.css" rel="stylesheet" />--%>
+
+    <link rel="stylesheet" type="text/css" href="/resources/css/table.css" media="all">
+
+    <script type="text/javascript" src="/resources/js/table.js"></script>
+
+
+   <%-- <link type="text/css" href="/resources/css/sort.css" rel="stylesheet" />--%>
+    <%--<spring:url value="/resources/js/sort.js" var="sortJs"/>
+    <script type="text/javascript" src="${sortJs}"></script>--%>
 
     <style>
         .error {
@@ -25,6 +33,7 @@
             margin: 16px;
         }
     </style>
+
 </head>
 
 <spring:url value="/" var="urlHome"/>

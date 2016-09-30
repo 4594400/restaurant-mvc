@@ -116,6 +116,18 @@ public class OrderController {
                 break;
             }
         }
+
+       /* Order order = orderService.load(orderId);
+        List<Dish> dishes = order.getDishes();
+        Dish thisDish = dishService.load(dishId);
+
+        System.out.println("list" + dishes.get(1).getIngredients().hashCode());
+        System.out.println("this" + thisDish.getIngredients().hashCode());
+
+        if (dishes.contains(thisDish)) {
+            dishes.remove(dishes.lastIndexOf(thisDish)); //order.getDishes().remove(dishes.lastIndexOf(thisDish))
+        }*/
+
         orderService.save(order);
         return "redirect:/admin/orders/show/" + order.getId();
     }

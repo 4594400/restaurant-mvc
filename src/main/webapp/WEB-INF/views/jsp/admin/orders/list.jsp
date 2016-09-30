@@ -17,19 +17,36 @@
     <br>
     <br>
 
-    <table border="0.2" style="align-items: center" class="table table-striped">
-        <thead style = "color:white;background-color:dimgrey">
+    <table class="example sort02 table-autosort:0 table-stripeclass:alternate">
+        <thead>
+       <%-- <tr>
+            <th colspan="7">Table Filtering</th>
+        </tr>--%>
         <tr>
-            <th>ID</th>
-            <th>Официант</th>
-            <th>Номер столика</th>
-            <th>Дата</th>
-            <th>Статус заказа</th>
-            <th></th>
-            <th></th>
+            <th class="table-sortable:numeric">ID</th>
+            <th class="table-sortable:numeric" >Официант</th>
+            <th class="table-sortable:numeric">Номер столика</th>
+            <th class="table-sortable:numeric">Дата</th>
+            <th class="table-sortable:numeric">Статус заказа</th>
+            <th> </th>
+            <th> </th>
+        </tr>
+        <tr>
+            <th>Filter:</th>
+            <th class="table-filtered"><input name="filter" size="8" onkeyup="Table.filter(this,this)"></th>
+            <th class="table-filtered"><input name="filter" size="8" onkeyup="Table.filter(this,this)"></th>
+            <th class="table-filtered"><input name="filter" size="8" onkeyup="Table.filter(this,this)"></th>
+            <th class="table-filtered"><select onchange="Table.filter(this,this)">
+                <option value="">All</option>
+                <option value="OPENED">OPENED</option>
+                <option value="CLOSED">CLOSED</option>
+            </select>
+            <th> </th>
+            <th> </th>
         </tr>
         </thead>
 
+        <tbody>
         <c:forEach items="${ordersAttr}" var="order">
             <tr>
                 <td><a href="/admin/orders/show/${order.id}">${order.id}</a></td>
@@ -53,8 +70,10 @@
             </tr>
 
         </c:forEach>
-
+        </tbody>
     </table>
+
+
 </div>
 <br/>
 

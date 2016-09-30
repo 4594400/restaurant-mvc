@@ -93,6 +93,7 @@ public class MenuController {
             Dish dish = iterator.next();
             if(dish.getId()==dishId) {
                 iterator.remove();
+                break;
             }
         }
         menuService.save(menu);
