@@ -70,7 +70,7 @@
                     </div>
 
                     <div style="margin-left: 30px">
-                        <h4 style="width: 480px">
+                        <h4 style="width: 430px">
                             <p style="text-align: justify">Ресторан «CENRAARCHY» расположенный в самом сердце Киева. Это
                                 необыкновенно уютное место для Ваших встреч, где Вы сможете отлично отдохнуть, позабыть
                                 о
