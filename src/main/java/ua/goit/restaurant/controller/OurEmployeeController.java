@@ -43,6 +43,6 @@ public class OurEmployeeController {
         modelMap.addAttribute("employeeStringMap", employeeStringMap);
 
         modelMap.addAttribute("employees", employeeService.findAll());
-        return "ouremployees/list";
+        return "ouremployees/list2";
     }
 }

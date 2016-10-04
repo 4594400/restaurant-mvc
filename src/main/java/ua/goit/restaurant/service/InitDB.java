@@ -247,7 +247,7 @@ public class InitDB {
         dishDao.save(carbonara);
 
         Dish lasagne = new Dish();
-        lasagne.setName("Паста Лазанья");
+        lasagne.setName("Лазанья");
         lasagne.setDishCategory(DishCategory.SIDE_DISH);
         lasagne.setPrice(60.0);
         lasagne.setWeight(200.0);
@@ -265,7 +265,7 @@ public class InitDB {
         dishDao.save(acquacotta);
 
         Dish goulash = new Dish();
-        goulash.setName("Суп Гуляш");
+        goulash.setName("Гуляш");
         goulash.setDishCategory(DishCategory.MAIN);
         goulash.setPrice(30.0);
         goulash.setWeight(300.0);

@@ -39,20 +39,6 @@
             </div>
         </spring:bind>
 
-       <%-- <spring:bind path="dishCategory">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Dish Category</label>
-                <div class="col-sm-10">
-                    
-                    <form:select path="dishCategory" class="form-control">
-                        <form:option value="NONE">--SELECT--</form:option>
-                        <form:options items="${listOfDishCategory}"/>
-                    </form:select>
-                    
-                </div>
-            </div>
-        </spring:bind>--%>
-
 
 
         <div class="form-group">

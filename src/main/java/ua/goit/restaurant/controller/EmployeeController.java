@@ -2,7 +2,6 @@ package ua.goit.restaurant.controller;
 
 
 import org.apache.commons.codec.binary.Base64;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import ua.goit.restaurant.service.interfaces.EmployeeService;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.sql.Date;
 import java.util.Map;
 
 @Controller
@@ -28,9 +26,6 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
-
-    /*@Autowired
-    private SessionFactory sessionFactory;*/
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);
 
@@ -54,26 +49,8 @@ public class EmployeeController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-           /* if (!file.isEmpty()) {
-                try {
-                    Session currentSession = sessionFactory.getCurrentSession();
-                    Blob blob = Hibernate.getLobCreator(currentSession).createBlob(file.getInputStream(), 100000);
-                    employee.setContent(blob);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }*/
-
             employeeService.save(employee);
-
             return "redirect:/admin/employees/list";
-
-            // POST/REDIRECT/GET
-            // return "redirect:/employee/" + employee.getName();
-
-            // POST/FORWARD/GET
-            // return "employees/list";
 
         }
     }
@@ -110,7 +87,6 @@ public class EmployeeController {
         return "redirect:/admin/employees/list";
     }
 
-    // show add user form
     @RequestMapping(value = "/admin/employees/add", method = RequestMethod.GET)
     public String showAddEmployeeForm(Model model) {
 
@@ -118,19 +94,10 @@ public class EmployeeController {
 
         Employee employee = new Employee();
 
-        // set default value
-        /*employee.setName("Микки");
-        employee.setSurname("Миконг");
-        employee.setBirthday(Date.valueOf("2000-12-12"));
-        employee.setPhoneNumber("999-99-99");
-        employee.setPosition(Position.CLEANER);
-        employee.setSalary(2500.0);*/
-
         model.addAttribute("employeeForm", employee);
         return "/admin/employees/employeeform";
     }
 
-    // show update form
     @RequestMapping(value = "/admin/employees/{id}/update", method = RequestMethod.GET)
     public String showUpdateEmployeeForm(@PathVariable("id") Long id, Model model) {
 
