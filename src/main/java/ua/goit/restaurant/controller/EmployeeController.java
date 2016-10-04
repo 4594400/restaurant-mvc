@@ -45,9 +45,13 @@ public class EmployeeController {
             return "/admin/employees/employeeform";
         } else {
             try {
-                employee.setContent(file.getBytes());
+                if(file.getBytes().length!=0) {
+                    employee.setContent(file.getBytes());
+                } else {
+                    employee.setContent(employeeService.load(employee.getId()).getContent());
+                }
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException("Cannot save employees image!");
             }
             employeeService.save(employee);
             return "redirect:/admin/employees/list";
