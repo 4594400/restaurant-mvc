@@ -52,14 +52,11 @@ public class MenuController {
 
         Menu menu = menuService.load(id);
         modelAndView.addObject("menu", menu);
-        System.out.println("*************************");
-        System.out.println(menu.toString());
 
         List<Dish> dishList = menu.getDishes();
         modelAndView.addObject("dishList", dishList);
 
         modelAndView.addObject("dish", new Dish());
-
 
         Map<Dish, String> dishNameList = new HashMap<>();
         for (Dish dish: dishService.findAll()){
